@@ -32,7 +32,63 @@ public class JavaSyntax {
 	 * 文档注释是java特有，定义在类，成员变量，成员方法上，可以通过javadoc工具提取
 	 * 文档注释中可以包含html，文档标签
 	 * 文档注释中常用文档标签
-	 * @see
+	 * @see 	引用其他类或类中成员，在see also中生成超链接
+	 * 				@see fully-qualified-classname
+	 * 				@see fully-qualified-classname#member
+	 * {@link}	行内引用其他类或类中成员，生成超链接
+	 * 				{@link fully-qualified-classname label}
+	 * 				{@link fully-qualified-classname#member label}
+	 * @version 版本信息
+	 * 				@version version-information
+	 * @author	作者信息
+	 * 				@author author-information
+	 * @since	jdk版本
+	 * @param	方法参数说明
+	 * 				@param paramName paramInformation
+	 * @return	方法返回值说明
+	 * 				@return returnInformation
+	 * @throws	方法异常说明
+	 * 				@throws exceptionClassName exceptionInformation
+	 *  
+	 *  常量 Constant
+	 *  存储数据的容器，一旦常量初始化完毕，存储的数据就不能修改
+	 *  java中常量通常使用public static final修饰
+	 *  常量值
+	 *  指程序中直接使用的数据，如整数常量值，浮点数常量值，字符常量值，字符串常量值，布尔常量值
+	 *  i.整数常量值
+	 *  整数常量值默认int类型，内存中占4byte。常量值后添加L，表示long类型，内存中占8字节。
+	 *  整数常量值存在四种表示形式，分为二进制，八进制，十进制，十六进制
+	 *  一个二进制位称为一个比特位（bit）
+	 *  八个二进制位称为一个字节（byte）
+	 *  三个二进制位对应一个八进制位
+	 *  四个二进制位对应一个十六进制位
+	 *  负数二进制等于对应正数二进制取反，加一
+	 *  负数二进制最高位为1，正数二进制最高位为0
+	 *  ii.浮点数常量值
+	 *  浮点数常量值默认double类型，内存中占8byte。常量值后添加F，表示float类型，内存中占4byte
+	 *  浮点数常量值存在两种表示形式，十进制，科学计数法
+	 *  科学计数法中E表示十的幂次，E后的数字必须是整数
+	 *  iii.布尔常量值
+	 *  true，false
+	 *  iiii.字符常量值
+	 *  字符常量值指单个字符，转移字符，unicode字符，字符常量值使用单引号标识
+	 *  java中转义字符常量值
+	 *  \r	回车
+	 * 	\b	退格
+	 * \n 换行
+	 * \f 	？？？
+	 * \t	制表符
+	 * \\	反斜线字符
+	 * \'	单引号字符
+	 * \" 	双引号字符
+	 * iiiii.字符串常量值
+	 * 字符串常量值使用双引号标识，每个字符串常量值都是String的实例
+	 * 
+	 * 变量
+	 * 存储数据的容器，对应内存中的一块存储空间
+	 * 
+	 * 
+	 * 
 	 * 
 	 */
 }
