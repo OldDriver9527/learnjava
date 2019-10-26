@@ -14,10 +14,10 @@ public class JavaSyntax {
 	 * 
 	 * 标识符 identifier
 	 * 程序中自定义名称，包名，类名，方法名，变量名，常量名都属于标识符
-	 * 标识符命名规则
+	 * i.标识符命名规则
 	 * 标识符由数字，字母，下划线，美元符号，人民币符号，中文构成
 	 * 标识符不能以数字开头，标识符不能与关键字重复
-	 * 标识符命名规范
+	 * ii.标识符命名规范
 	 * 包名要求所有字母小写
 	 * 类名要求首字母大写，其后每个单词的首字母大写
 	 * 方法名要求首字母小写，其后每个单词首字母大写
@@ -27,11 +27,14 @@ public class JavaSyntax {
 	 * 注释 comment
 	 * 注解说明的文字
 	 * java中包含三种注释，单行注释，多行注释，文档注释
+	 * i.单行注释
 	 * 单行注释中能够嵌套单行注释及多行注释
+	 * ii.多行注释
 	 * 多行注释中不能嵌套多行注释
+	 * iii.文档注释
 	 * 文档注释是java特有，定义在类，成员变量，成员方法上，可以通过javadoc工具提取
 	 * 文档注释中可以包含html，文档标签
-	 * 文档注释中常用文档标签
+	 * iiii.文档注释中常用文档标签
 	 * @see 	引用其他类或类中成员，在see also中生成超链接
 	 * 				@see fully-qualified-classname
 	 * 				@see fully-qualified-classname#member
@@ -88,9 +91,9 @@ public class JavaSyntax {
 	 * 存储数据的容器，对应内存中的一块存储空间
 	 * java属于强类型语言，使用变量前必须声明，指定类型变量只能接收同一类型值
 	 * 声明变量的格式 数据类型 变量名 = 初始化值；
-	 * 数据类型
+	 * i.数据类型
 	 * java中包含两种数据类型，基本数据类型，引用数据类型
-	 * i.基本数据类型
+	 * 基本数据类型
 	 * byte		占1byte	-128~127					
 	 * short		占2byte	-2^15~2^15-1
 	 * int			占4byte	-2^31~2^31-1
@@ -99,8 +102,22 @@ public class JavaSyntax {
 	 * double	占8byte
 	 * char		占2byte
 	 * boolean	
-	 * ii.引用数据类型
+	 * 引用数据类型
 	 * 引用数据类型包括，类，接口，数组。引用数据类型由用户自定义
 	 * null值可以转换为任意引用类型，赋值给任意引用类型变量
+	 * ii.高精度数字
+	 * BigInteger	
+	 * 可以封装超出long类型的整数常量值
+	 * BigDecimal
+	 * 二进制无法准确表示浮点数，使用基本类型值进行运算存在误差，当有精度要求时，建议使用BigDecimal
+	 * 创建BigInteger，BigDecimal对象时建议使用字符串作为构造器参数，减小误差
+	 * BigInteger，BigDecimal对象不可变，进行运算后会产生新对象
+	 * BigDecimal对象进行除法运算，结果除不尽时必须指定保留小数点位数
+	 * iii.自动类型提升
+	 * 对于boolean以外的七种基本数据类型，参与运算时低等级数据类型会提升为最高等级数据类型，之后再进行运算
+	 * 
 	 */
+	public static void main(String[] args) {
+		
+	}
 }
