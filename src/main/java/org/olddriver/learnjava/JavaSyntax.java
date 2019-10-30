@@ -101,8 +101,8 @@ public class JavaSyntax {
 	 * float		占4byte	
 	 * double	占8byte
 	 * char		占2byte
-	 * boolean	
-	 * 引用数据类型
+	 * boolean
+	 * 引用数据类型 Reference Data Types
 	 * 引用数据类型包括，类，接口，数组。引用数据类型由用户自定义
 	 * null值可以转换为任意引用类型，赋值给任意引用类型变量
 	 * ii.高精度数字
