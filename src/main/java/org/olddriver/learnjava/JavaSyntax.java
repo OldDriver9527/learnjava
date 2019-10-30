@@ -1,5 +1,7 @@
 package org.olddriver.learnjava;
 
+import java.math.BigInteger;
+
 public class JavaSyntax {
 	/*
 	 * java 
@@ -115,6 +117,10 @@ public class JavaSyntax {
 	 * BigDecimal对象进行除法运算，结果除不尽时必须指定保留小数点位数
 	 * iii.自动类型提升
 	 * 对于boolean以外的七种基本数据类型，参与运算时低等级数据类型会提升为最高等级数据类型，之后再进行运算
+	 * 数据类型等级由低到高 
+	 * byte，short，int，long，float，double
+	 * char
+	 * byte，short，char 三者之间进行运算时，将数据类型提升为int型之后再进行运算
 	 * 
 	 */
 }
