@@ -117,7 +117,4 @@ public class JavaSyntax {
 	 * 对于boolean以外的七种基本数据类型，参与运算时低等级数据类型会提升为最高等级数据类型，之后再进行运算
 	 * 
 	 */
-	public static void main(String[] args) {
-		
-	}
 }
