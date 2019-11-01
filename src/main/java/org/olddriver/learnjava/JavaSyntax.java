@@ -190,11 +190,88 @@ public class JavaSyntax {
 	 * 
 	 * 表达式，语句，块 Expressions, Statements, Blocks
 	 * i.表达式由变量，运算符，方法调用构成，表达式运算后产生唯一的值
-	 * ii.语句由表达式构成，以分号结束。
+	 * ii.语句由表达式构成
 	 * 语句分为表达式语句，声明语句，流程控制语句
+	 * 表达式语句，声明语句以分号结束；流程控制语句中do-while语句使用分号结尾
 	 * iii.块由{}构成，块中可以包含零个或多个语句；块定义在类中
 	 * 
 	 * 流程控制语句
+	 * if	在多个执行路径中选择一个执行
+	 * if(boolean-expression){
+	 * 		statement;
+	 * }
+	 * booealn-expression为true执行{}内语句，为false不执行{}内语句
+	 * if(boolean-expression){
+	 * 		statement;
+	 * }else{
+	 * 		statement;
+	 * }
+	 * 当boolean-expression为true，执行if后语句
+	 * 当boolean-expression为false，执行else后语句
+	 * if(boolean-expression){
+	 * 		statement;
+	 * }else if(boolean-expression){
+	 * 		statement;
+	 * }else{
+	 * 		statement;
+	 * }
+	 * 从上向下顺序判断boolean-expression，当boolean-expression为true，执行对应语句且不再向下判断
+	 * 当所有boolean-expression都为false，执行else后的语句
+	 * 多个语句中仅会有一个执行
 	 * 
+	 * switch 在多个执行路径中选择一个或多个执行
+	 * switch(expression){
+	 * 		case	value0:statement;break;
+	 * 		case	value1:statement;break;
+	 * 		default:statement;
+	 * }
+	 * i.switch表达式仅支持byte，Byte，short，Short，int，Integer，char，Character，枚举（jdk5），String（jdk7）类型
+	 * ii.case标签，default标签在书写上无顺序，在执行上存在顺序。从上向下判断case标签，当所有case标签都不匹配，执行default标签
+	 * iii.可以为switch块中的语句定义一个或多个case标签及一个default标签
+	 * iiii.break语句用于终止switch语句
+	 * 当switch语句中未定义break语句，switch语句会从匹配的case标签开始执行，一直执行到switch语句结束或遇到break语句
+	 * iiiii.switch语句只能判断单个值，if语句可以判断区间值
+	 * 
+	 * while	
+	 * while(boolean-expression){
+	 * 		statement;
+	 * }
+	 * 当boolean-expression为true，执行一次循环体，之后继续判断boolean-expression，直到boolean-expression为false
+	 * 循环停止
+	 * 
+	 * do-while
+	 * do{
+	 * 		statement;
+	 * }while(boolean-expression);
+	 * do-while语句循环体至少会执行一次
+	 * 
+	 * for
+	 * for(initialization;termination;increment statement){
+	 * 		statement;
+	 * }
+	 * i.初始化表达式在循环开始时执行一次
+	 * 终止表达式为false循环终止
+	 * 增加表达式在每次迭代后执行一次
+	 * ii.初始化表达式中声明的变量，随循环的执行而创建，随着循环的结束而消失；初始化表达式中声明的变量
+	 * 可以在终止表达式，增加表达式中使用
+	 * 
+	 * foreach 增强for语句
+	 * for(LocalVariableType VariableDeclaratorId:Expression){
+	 * 		statement;
+	 * }
+	 * 增强for循环用于迭代数组及单列容器
+	 * 
+	 * break
+	 * break语句用于终止switch语句，for语句，while语句，do-while语句
+	 * break语句具有两种形式，具有标签，不具有标签；在嵌套循环中，不带标签的break语句默认终止当前循环，带标签的break语句
+	 * 可以终止指定循环
+	 * 
+	 * continue
+	 * continue语句用于跳过当前迭代，进入下一次迭代
+	 * continue语句具有两种形式，具有标签形式，不具有标签形式；在嵌套循环中，不具有标签的continue语句默认跳过当前迭代，
+	 * 具有标签的continue语句可以跳过指定迭代
+	 * 
+	 * return
+	 * return语句用于退出当前方法
 	 */
 }
