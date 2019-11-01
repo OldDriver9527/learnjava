@@ -273,5 +273,23 @@ public class JavaSyntax {
 	 * 
 	 * return
 	 * return语句用于退出当前方法
+	 * 
+	 * 方法
+	 * 类中可以被调用执行的代码，定义了类的行为
+	 * i.方法声明
+	 * modifier	returnType	methodName(argument list)exception list{
+	 * 		method body
+	 * }
+	 * ii.方法只有被调用时才会执行
+	 * iii.调用对象方法的行为称为向对象发送调用请求
+	 * iiii.方法签名由方法名及参数类型构成
+	 * iiiii.overload
+	 * 多个方法共享同一名称的情况称为重载
+	 * 同一个类中多个方法可以共享一个名称，只要其参数列表不同即可，参数列表不同指参数个数不同，参数类型不同，参数顺序不同
+	 * 方法重载与返回值类型无关，因为编译器无法根据返回值类型区分方法
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 }
