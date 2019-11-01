@@ -129,7 +129,7 @@ public class JavaSyntax {
 	 * 
 	 * 运算符 Operator
 	 * 优先级，结合性
-	 * 优先级和结合性用于将表达式划分为多个子表达式，多个子表达式从左到右执行
+	 * ????
 	 * 
 	 * 赋值运算符 Assignment Operator
 	 * i.当高等级数据类型赋值给低等级数据类型时，
