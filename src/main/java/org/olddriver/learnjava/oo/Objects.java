@@ -13,5 +13,8 @@ public class Objects {
 	 * new操作符后必须调用构造器
 	 * iii.初始化对象
 	 * 通过构造器初始化对象
+	 * 
+	 * 
+	 * 
 	 */
 }
