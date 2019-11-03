@@ -1,4 +1,4 @@
-package org.olddriver.learnjava;
+package org.olddriver.learnjava.oo;
 
 public class ObjectOrientedProgramming {
 	/*
@@ -15,6 +15,5 @@ public class ObjectOrientedProgramming {
 	 * 面向对象程序特点
 	 * java程序是对象的集合
 	 * 
-	 * 声明类
 	 */
 }

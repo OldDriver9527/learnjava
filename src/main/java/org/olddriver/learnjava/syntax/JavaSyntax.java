@@ -1,4 +1,4 @@
-package org.olddriver.learnjava;
+package org.olddriver.learnjava.syntax;
 
 
 public class JavaSyntax {
