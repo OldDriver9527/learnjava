@@ -1,6 +1,7 @@
 package org.olddriver.learnjava;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class JavaSyntax {
 	/*
@@ -298,13 +299,23 @@ public class JavaSyntax {
 	 * 元素类型[] 数组名;
 	 * 元素类型可以是接口，抽象类；[]个数指定数组维度
 	 * 元素类型[]称为数组类型，数组类型不包含长度
-	 * 声明数组引用并不会创建数组对象，仅通知编译器该变量用于存储数组对象的引用
+	 * 声明数组引用并不会创建数组对象，仅通知编译器该变量用于存储数组对象的地址
 	 * ii.数组初始化
 	 * 通过数组创建表达式，数组初始化语句完成初始化
 	 * 数组创建表达式必须指定元素类型，数组维度，至少一个维度数组的长度
 	 * 数组初始化语句封装在{}中，用，分隔多个表达式，只能在声明数组引用时使用
 	 * iii.数组成员
 	 * 数组对象中包含被final修饰的成员变量length；从Object类中继承的方法
-	 * 
+	 * iiii.数组操作
+	 * 数组工具类Arrays中提供操作数组的方法
+	 * toString	打印数组元素
+	 * sort	数组排序
+	 * equals	数组比较，仅当数组长度一直，元素一致时数组相同
+	 * deepEquals	用于比较多维数组是否相同
+	 * binarySearch		二分查找
+	 * asList	数组转换为列表，该列表不支持增删操作
+	 * fill	使用指定值填充数组
+	 * copyOf	从起始位置复制数组
+	 * copyOfRange	从指定索引赋值数组
 	 */
 }
