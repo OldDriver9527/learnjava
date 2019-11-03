@@ -1,7 +1,5 @@
 package org.olddriver.learnjava;
 
-import java.math.BigInteger;
-import java.util.Arrays;
 
 public class JavaSyntax {
 	/*
