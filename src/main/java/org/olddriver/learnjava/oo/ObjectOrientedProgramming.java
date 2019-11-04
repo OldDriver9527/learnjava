@@ -1,5 +1,7 @@
 package org.olddriver.learnjava.oo;
 
+import org.olddriver.learnjava.oo.ObjectOrientedProgramming.Bicycle.Inner;
+
 public class ObjectOrientedProgramming {
 	/*
 	 * 对象 Object
@@ -39,14 +41,22 @@ public class ObjectOrientedProgramming {
 	 * 4.子类中能够定义父类中不存在的成员变量
 	 * 5.子类中能够直接调用继承自父类的成员方法
 	 * 6.子类中能够再次定义父类中非static，非final成员方法，将父类方法覆盖
+	 * 7.子类中能够再次定义父类中的static成员方法，将父类方法隐藏
+	 * 8.在子类中定义父类中不存在的成员方法
 	 * 
+	 * 多态	Polymorphism
 	 */
 	
+	String temmp = "sss";
 	class Bicycle{
 		
 		public String field1= "Bicycle";
 		void test() {
 			System.out.println("Bicycle");
+		}
+		
+		class Inner{
+			String i = "iii";
 		}
 	}
 	
@@ -58,5 +68,8 @@ public class ObjectOrientedProgramming {
 		ObjectOrientedProgramming oop = new ObjectOrientedProgramming();
 		AE86 ae86 = oop.new AE86();
 		System.out.println(ae86.field1);
+		
+		Inner i = ae86.new Inner();
+		System.out.println(i.i);
 	}
 }
