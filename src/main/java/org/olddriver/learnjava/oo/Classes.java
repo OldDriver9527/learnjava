@@ -44,13 +44,13 @@ public class Classes {
 	 * 可变参数
 	 * 
 	 * Lambda表达式  Lambda Expression
-	 * lambda表达式为匿名方法，匿名方法能够作为方法参数传递
-	 * 匿名方法为函数式接口子类对象
-	 * 语法格式
+	 * lambda表达式用于创建匿名方法，即函数式接口子类对象；匿名方法能够作为方法参数传递
+	 * （函数式接口指仅包含一个抽象方法的接口）
+	 * i.语法格式
 	 * (argument list) -> {statement} 或 (argument list) -> expression
 	 * 参数列表中参数类型可省略
 	 * 参数列表中仅包含一个参数小括号可省略
-	 * 
+	 * ii.lambda表达式中使用局部变量，局部变量要使用final修饰
 	 * 
 	 * 
 	 * 
