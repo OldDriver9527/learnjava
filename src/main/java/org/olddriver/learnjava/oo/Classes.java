@@ -9,6 +9,7 @@ public class Classes {
 	 * 		constructor,field,method
 	 * }
 	 * 类仅有两种访问权限，public及package
+	 * 被public修饰的类能够在任意位置使用，package权限的类仅能在当前包中使用
 	 * 
 	 * 成员变量与局部变量区别
 	 * i.成员变量随对象的创建而创建，随对象的销毁而销毁

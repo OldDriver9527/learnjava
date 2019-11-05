@@ -8,6 +8,7 @@ public interface Interfaces{
 	 * }
 	 * 接口仅有两种访问权限，public及package；
 	 * public修饰的接口可以在任意位置使用，package权限接口只能在当前包中使用
+	 * 接口中所有抽象方法，默认方法，静态方法默认public修饰，public修饰符可省略
 	 * 
 	 * ii.默认方法 default method
 	 * 默认方法用于在接口中定义方法的默认实现，使用default关键字修饰，默认方法包含方法体
@@ -16,8 +17,8 @@ public interface Interfaces{
 	 * 通过interface.super.defaultMethod的形式可在实现类中访问接口中默认方法
 	 * 
 	 * iii.静态方法 static method
-	 * 使用static关键字修饰
-	 * 静态方法不被继承
+	 * 使用static关键字修饰，只能通过接口名访问
+	 * 静态方法不被子接口，实现类继承
 	 * 
 	 * iiii.解决默认方法冲突方式
 	 * 当接口中默认方法与父类中成员方法冲突，父类中成员方法优先于接口中默认方法
