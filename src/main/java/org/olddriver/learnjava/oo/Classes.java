@@ -8,6 +8,7 @@ public class Classes {
 	 * modifier class ClassName{
 	 * 		constructor,field,method
 	 * }
+	 * 类仅有两种访问权限，public及package
 	 * 
 	 * 成员变量与局部变量区别
 	 * i.成员变量随对象的创建而创建，随对象的销毁而销毁

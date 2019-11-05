@@ -1,15 +1,17 @@
 package org.olddriver.learnjava.oo;
 
-import org.olddriver.learnjava.oo.ObjectOrientedProgramming.Bicycle.Inner;
-
-public class ObjectOrientedProgramming {
+public class ObjectOrientedProgramming{
 	/*
 	 * 对象 Object
-	 * 软件对象和现实中对象对应，对象是一种奇特变量，由属性和行为构成，类成员变量存储对象属性，方法暴露对象行为
+	 * 软件对象和现实中对象对应，对象是一种奇特变量，由属性和行为构成
 	 * 
 	 * 类 	Class
-	 * 类是对具有相同属性和行为的对象的抽象，类是创建对象的蓝图
+	 * 类是对具有相同属性和行为的对象的抽象，类是创建对象的蓝图；
+	 * 类包含成员变量，成员方法，构造器，内部类，内部接口，？？？
 	 * 类是java程序的基本单元
+	 * 
+	 * 接口	Interface
+	 * 接口定义类与外界交互的契约，接口中可以包含常量，抽象方法，默认方法，static方法，内部类，内部接口
 	 * 
 	 * 面向对象思想
 	 * 将现实中对象抽象为类，在java程序中使用类的实例解决问题
@@ -29,9 +31,8 @@ public class ObjectOrientedProgramming {
 	 * 继承	Inheritance
 	 * 在现有类的基础上派生出新类称为继承，是复用代码的一种方式
 	 * 派生类称为子类，派生子类的类称为父类
-	 * 子类继承父类，子类会继承父类的部分成员，如成员变量，成员方法，内部类？？？
+	 * 子类继承父类，子类会继承父类的成员变量，成员方法，内部类？？？
 	 * i.类层次结构
-	 * java中类支持单继承，不支持多继承
 	 * Object类是所有类的父类，定义类的通用行为；创建类时若不显式指明父类，默认继承Object类
 	 * ii.子类中的操作
 	 * 1.子类必定会继承父类public，protected成员；当子父类位于同一个包中，子类会继承父类中包访问权限的成员；
@@ -41,35 +42,27 @@ public class ObjectOrientedProgramming {
 	 * 4.子类中能够定义父类中不存在的成员变量
 	 * 5.子类中能够直接调用继承自父类的成员方法
 	 * 6.子类中能够再次定义父类中非static，非final成员方法，将父类方法覆盖
+	 * 子类方法若想覆盖父类中方法，
+	 * 子类方法方法签名要与父类方法保持一致，子类方法返回值类型可以是父类方法返回值类型的子类；
+	 * 子类方法访问权限要大于等于父类方法访问权限；
+	 * 子类方法的异常列表必须是父类方法异常列表的子类或子集；
+	 * 子类方法上可以添加@Override注解,告知编译器
 	 * 7.子类中能够再次定义父类中的static成员方法，将父类方法隐藏
+	 * 子类方法若想隐藏父类中方法，子类方法方法签名及返回值类型要与父类方法一致
 	 * 8.在子类中定义父类中不存在的成员方法
-	 * 
+	 * iii.对象转型
+	 * 子类对象由子类类型转型为父类类型，称为向上转型
+	 * 子类对象由父类类型转型为子类类型，称为向下转型
+	 * 向上转型前可以使用instanceof操作符进行判断，避免运行时异常
+	 * iiii.继承，实现
+	 * java中类支持单继承，不支持多继承，避免多个父类中成员变量冲突
+	 * java中接口支持多继承，因为接口中不存在成员变量，多个父接口中常量冲突能够在编译时发现
+	 * java中类能够实现多个接口
+	 * 当接口中默认方法与父类中成员方法冲突，父类中成员方法优先于接口中默认方法
+	 * 当父接口与子接口中默认方法冲突，子接口中默认方法优先于父接口中默认方法
+	 * 当多个独立接口中默认方法冲突，必须在实现类中对默认方法进行覆盖
+	 * 通过接口.super.member的形式在实现类中访问接口成员
 	 * 多态	Polymorphism
+	 * 
 	 */
-	
-	String temmp = "sss";
-	class Bicycle{
-		
-		public String field1= "Bicycle";
-		void test() {
-			System.out.println("Bicycle");
-		}
-		
-		class Inner{
-			String i = "iii";
-		}
-	}
-	
-	class AE86 extends Bicycle{
-		public String field1= "AE86";
-	}
-	
-	public static void main(String[] args) {
-		ObjectOrientedProgramming oop = new ObjectOrientedProgramming();
-		AE86 ae86 = oop.new AE86();
-		System.out.println(ae86.field1);
-		
-		Inner i = ae86.new Inner();
-		System.out.println(i.i);
-	}
 }
