@@ -26,7 +26,8 @@ public interface Interfaces{
 	 * 当多个独立接口中默认方法冲突，必须在实现类中对默认方法进行覆盖
 	 * 
 	 * iiiii.实现接口
-	 * 类使用implements关键字实现接口，类可以实现多个接口，
+	 * 类使用implements关键字实现接口，类可以实现多个接口
+	 * 实现类从接口中继承常量，抽象方法，默认方法？？？
 	 * 按照惯例，implements关键字位于extends关键字之后
 	 * 
 	 * iiiiii.多继承
