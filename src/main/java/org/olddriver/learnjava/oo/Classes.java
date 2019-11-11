@@ -61,5 +61,18 @@ public class Classes {
 	 * ii.lambda表达式中使用局部变量，局部变量要使用final修饰
 	 * iii.lambda表达式类型由编译器推断，lambda表达式上下文期望的类型称为目标类型
 	 * 只有在目标类型明确的情况下才能使用lambda表达式，如引用类型变量声明，赋值，return语句，方法及构造器实参，，，
+	 * 
+	 * Object类中方法
+	 * equals	判断当前对象与参数对象是否相同，Object类中eqauls方法使用==运算符进行判断；
+	 * 				子类可override Object类中方法，自定义相等条件，但必须同时覆盖hashCode方法，确保对象
+	 * 				相等时，散列值也相等
+	 * hashCode	返回对象散列值，Object类中hashCode方法返回对象内存地址的十六进制表现形式
+	 * 
+	 * final类，final方法，final变量
+	 * i.final修饰的变量变为成常量，一旦初始化完毕，就不能修改
+	 * ii.final修饰的方法不能被子类覆盖，构造器中调用的方法通常应使用final修饰，防止该方法被子类覆盖
+	 * private修饰的方法默认final修饰
+	 * iii.final修饰的类不能被继承，final类中方法默认使用final修饰
+	 * 
 	 */
 }

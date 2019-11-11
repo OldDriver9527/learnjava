@@ -1,8 +1,5 @@
 package org.olddriver.learnjava.oo;
 
-import java.util.Arrays;
-import java.util.Base64;
-
 public class ObjectOrientedProgramming{
 	/*
 	 * 对象 Object
@@ -59,6 +56,11 @@ public class ObjectOrientedProgramming{
 	 * 子类对象由子类类型转型为父类类型，称为向上转型
 	 * 子类对象由父类类型转型为子类类型，称为向下转型
 	 * 向下转型前可以使用instanceof操作符进行判断，避免运行时异常
+	 * iiii.super关键字
+	 * 使用方式1：子类中使用super关键字访问父类中具有访问权限的成员
+	 * 使用方式2：子类构造器中使用super关键字访问父类构造器进行父类初始化，super语句必须位于子类构造器第一行；
+	 * 					  若子类构造器中未显式调用父类构造器，编译器会在子类构造器第一行插入super语句访问父类默认构造器
+	 * 					  子类构造器中调用父类构造器会一直调用到Object类的构造器为止，称为构造器链
 	 * 
 	 * 多态	Polymorphism
 	 * 多态指子类中既能定义特有内容，又能分享父类中共有内容
@@ -71,5 +73,7 @@ public class ObjectOrientedProgramming{
 	 * iii.成员方法静态绑定
 	 * 子类对象向上转型后，通过子类对象，调用父类中static，private，final成员方法，编译器在编译时期根据引用变量类型
 	 * 建立方法调用与方法体之间的关联
+	 * 
+	 * 
 	 */
 }
