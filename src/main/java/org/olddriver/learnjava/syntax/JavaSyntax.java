@@ -229,7 +229,7 @@ public class JavaSyntax {
 	 * ii.case标签，default标签在书写上无顺序，在执行上存在顺序。从上向下判断case标签，当所有case标签都不匹配，执行default标签
 	 * iii.可以为switch块中的语句定义一个或多个case标签及一个default标签
 	 * iiii.break语句用于终止switch语句
-	 * 当switch语句中未定义break语句，switch语句会从匹配的case标签开始执行，一直执行到switch语句结束或遇到break语句
+	 * 当switch语句中未定义break语句，switch语句会从匹配位置开始执行，一直执行到switch语句结束或遇到break语句
 	 * iiiii.switch语句只能判断单个值，if语句可以判断区间值
 	 * 
 	 * while	
@@ -284,7 +284,7 @@ public class JavaSyntax {
 	 * iii.调用对象方法的行为称为向对象发送调用请求
 	 * iiii.方法签名由方法名及参数类型构成
 	 * iiiii.overload
-	 * 多个方法共享同一名称的情况称为重载
+	 * 同一类中，多个方法共享同一名称的情况称为重载
 	 * 同一个类中多个方法可以共享一个名称，只要其参数列表不同即可，参数列表不同指参数个数不同，参数类型不同，参数顺序不同
 	 * 方法重载与返回值类型无关，因为编译器无法根据返回值类型区分方法
 	 * 
@@ -306,7 +306,7 @@ public class JavaSyntax {
 	 * 数组对象中包含被final修饰的成员变量length；从Object类中继承的方法
 	 * iiii.数组操作
 	 * 数组工具类Arrays中提供操作数组的方法
-	 * toString	打印数组元素
+	 * toString	获取数组的字符串表现形式
 	 * sort	数组排序
 	 * equals	数组比较，仅当数组长度一直，元素一致时数组相同
 	 * deepEquals	用于比较多维数组是否相同
