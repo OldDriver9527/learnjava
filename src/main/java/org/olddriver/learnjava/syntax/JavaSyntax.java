@@ -158,7 +158,7 @@ public class JavaSyntax {
 	 * i.&&有假即假，同真为真；当左侧表达式为false，右侧表达式不参与运算
 	 * true && true	true
 	 * true && false	false
-	 * false && false	false
+	 * false && true	false
 	 * false && false	false
 	 * ii.||	有真即真，同假为假；左侧表达式为true，右侧表达式不参与运算
 	 * true || false	true
