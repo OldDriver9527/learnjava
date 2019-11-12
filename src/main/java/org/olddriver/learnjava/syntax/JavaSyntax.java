@@ -145,7 +145,7 @@ public class JavaSyntax {
 	 * + 会将byte，short，char提升为int类型
 	 * ++ --
 	 * ++a	前缀式，先执行+1运算，然后整个表达式取a的值
-	 * a++	后缀是，表达式先去a的值，然后a执行+1运算
+	 * a++	后缀式，表达式先去a的值，然后a执行+1运算
 	 * 
 	 * 比较运算符
 	 * > >= < <= == !=
@@ -247,7 +247,7 @@ public class JavaSyntax {
 	 * 
 	 * for
 	 * for(initialization;termination;increment statement){
-	 * 		statement; 
+	 * 		statement;
 	 * }
 	 * i.初始化表达式在循环开始时执行一次
 	 * 终止表达式为false循环终止
