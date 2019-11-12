@@ -247,7 +247,7 @@ public class JavaSyntax {
 	 * 
 	 * for
 	 * for(initialization;termination;increment statement){
-	 * 		statement;
+	 * 		statement; 
 	 * }
 	 * i.初始化表达式在循环开始时执行一次
 	 * 终止表达式为false循环终止
