@@ -216,7 +216,7 @@ public class JavaSyntax {
 	 * 		statement;
 	 * }
 	 * 从上向下顺序判断boolean-expression，当boolean-expression为true，执行对应语句且不再向下判断
-	 * 当所有boolean-expression都为false，执行else后的语句
+	 * 当boolean-expression为false，继续判断下一个boolean-expression；当所有boolean-expression都为false，执行else后的语句
 	 * 多个语句中仅会有一个执行
 	 * 
 	 * switch 在多个执行路径中选择一个或多个执行
