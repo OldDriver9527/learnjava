@@ -1,7 +1,7 @@
 package org.olddriver.learnjava.oo;
 
 public class Modifiers {
-	/*
+	/**
 	 * 访问权限修饰符
 	 * java中存在三种访问权限修饰符，public，protected，private
 	 * 将访问权限分为四种，私有访问权限，包访问权限，继承访问权限，公共访问权限

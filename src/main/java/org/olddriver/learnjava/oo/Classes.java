@@ -1,7 +1,7 @@
 package org.olddriver.learnjava.oo;
 
 public class Classes {
-	/*
+	/**
 	 * 声明类
 	 * 声明类会定义一个新引用类型， 声明类分为普通类声明，枚举声明
 	 * i.类声明格式

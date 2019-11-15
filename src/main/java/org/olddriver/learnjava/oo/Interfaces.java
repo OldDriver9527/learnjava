@@ -1,7 +1,7 @@
 package org.olddriver.learnjava.oo;
 
 public interface Interfaces{
-	/*
+	/**
 	 * i.声明接口
 	 * modifier interface InterfaceName extends interface list{
 	 * 		constant，abstract method

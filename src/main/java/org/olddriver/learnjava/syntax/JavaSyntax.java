@@ -2,7 +2,7 @@ package org.olddriver.learnjava.syntax;
 
 
 public class JavaSyntax {
-	/*
+	/**
 	 * java
 	 * java既是一种高级编程语言，也是一个平台
 	 * java是基于类且面向对象的语言，使用java语言编写代码包含在.java源文件中，通过javac编译器将源文件编译成字节码文件，然后通过java启动工具
