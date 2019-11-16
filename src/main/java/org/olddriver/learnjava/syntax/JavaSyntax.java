@@ -1,6 +1,9 @@
 package org.olddriver.learnjava.syntax;
 
 
+import org.olddriver.learnjava.oo.Encapsulation;
+import org.olddriver.learnjava.oo.Encapsulation.*;
+
 public class JavaSyntax {
 	/**
 	 * java
@@ -21,7 +24,7 @@ public class JavaSyntax {
 	 * ii.标识符命名规范
 	 * 包名要求所有字母小写
 	 * 类名要求首字母大写，其后每个单词的首字母大写
-	 * 方法名要求首字母小写，其后每个单词首字母大写
+	 * 方法名要求首字母小写，其后每个单词首字母大写；方法名第一个单词应为动词
 	 * 变量名要求首字母小写，其后每个单词首字母大写
 	 * 常量名要求所有字母大写，单词之间下划线分隔
 	 * 
