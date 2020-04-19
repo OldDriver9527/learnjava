@@ -16,8 +16,8 @@ public class JavaSyntax {
 	 * 标识符 identifier
 	 * 程序中自定义名称，包名，类名，方法名，变量名，常量名都属于标识符
 	 * i.标识符命名规则
-	 * 标识符由java数字，java字母组成，java字母包括所有unicode字符
-	 * 标识符不能以java数字开头，标识符不能与关键字重复
+	 * 标识符由数字，字母，下划线，美元符号构成，还可包含中文，韩文等特殊字符
+	 * 标识符不能以数字开头，标识符不能与关键字重复
 	 * ii.标识符命名规范
 	 * 包名要求所有字母小写
 	 * 类名要求首字母大写，其后每个单词的首字母大写
@@ -34,8 +34,8 @@ public class JavaSyntax {
 	 * 多行注释中不能嵌套多行注释
 	 * iii.文档注释
 	 * 文档注释是java特有，定义在类，成员变量，成员方法，构造器上，可以通过javadoc工具提取
-	 * 文档注释中可以包含html，文档标签
-	 * iiii.文档注释中常用文档标签
+	 * 文档注释中可以包含html，注释标签 comment tag
+	 * iiii.文档注释中常用注释标签
 	 * @see 	引用其他类或类中成员，在see also中生成超链接
 	 * 				@see fully-qualified-classname
 	 * 				@see fully-qualified-classname#member
@@ -57,7 +57,7 @@ public class JavaSyntax {
 	 *  常量 Constant
 	 *  存储数据的容器，一旦常量初始化完毕，常量中存储数据就不能修改
 	 *  使用常量前必须声明，java中常量通常使用public static final修饰
-	 *  常量值 Literals
+	 *  字面常量值 Literals
 	 *  指程序中直接使用的数据，如整数常量值，浮点数常量值，字符常量值，字符串常量值，布尔常量值
 	 *  i.整数常量值
 	 *  整数常量值默认int类型，内存中占4byte。常量值后添加L，表示long类型，内存中占8字节。
@@ -72,6 +72,7 @@ public class JavaSyntax {
 	 *  java中二进制以补码形式表示
 	 *  ii.浮点数常量值
 	 *  浮点数常量值默认double类型，内存中占8byte。常量值后添加F，表示float类型，内存中占4byte
+	 *  单精度浮点数，双精度浮点数区别在于十进制位数不同，单精度十进制位数为8，双精度十进制位数为17
 	 *  浮点数常量值存在两种表示形式，十进制，科学计数法
 	 *  科学计数法中E表示十的幂次，E后的数字必须是整数
 	 *  科学计数法表示的常量值默认double类型
@@ -82,14 +83,14 @@ public class JavaSyntax {
 	 *  java中转义字符常量值
 	 *  \r	回车
 	 * 	\b	退格
-	 * \n 换行
-	 * \f 	？？？
-	 * \t	制表符
-	 * \\	反斜线字符
-	 * \'	单引号字符
-	 * \" 	双引号字符
+	 *  \n 换行
+	 *  \f 	？？？
+	 *  \t	制表符
+	 *  \\	反斜线字符
+	 *  \'	单引号字符
+	 *  \" 	双引号字符
 	 * iiiii.字符串常量值
-	 * 字符串常量值使用双引号标识，每个字符串常量值都是String类的实例
+	 * 字符串常量值使用双引号标识，每个字符串常量值都是String类的一个实例
 	 * iiiiii.jdk7添加特性
 	 * jdk7后可以在整数常量值，浮点数常量值数字之间添加_，对数字进行分组，增强可读性
 	 *
@@ -98,7 +99,6 @@ public class JavaSyntax {
 	 * java属于强类型语言，使用变量前必须声明，指定类型变量只能接收同一类型值
 	 * java中变量可以分为三类，成员变量，局部变量，方法参数
 	 * 声明变量的格式 修饰符 数据类型 变量名；
-	 *
 	 * i.数据类型
 	 * java中包含两种数据类型，基本数据类型，引用数据类型
 	 * 基本数据类型 Primitive Data Types
@@ -106,8 +106,8 @@ public class JavaSyntax {
 	 * short		占2byte	-2^15~2^15-1
 	 * int			占4byte	-2^31~2^31-1
 	 * long		占8byte	-2^63~2^63-1
-	 * float		占4byte	
-	 * double	占8byte
+	 * float		占4byte，十进制位数为8位
+	 * double	占8byte，十进制位数为17位
 	 * char		占2byte 0~65535
 	 * boolean
 	 * 引用数据类型 Reference Data Types
@@ -131,7 +131,7 @@ public class JavaSyntax {
 	 * 5若操作数最高级类型为int以下，将所有操作数都提升为int类型，且结果也为int类型
 	 * iiii.强制类型转换
 	 * 对boolean以外七种基本数据类型，将数据类型从高等级转换为低等级，称为强制类型转换
-	 * 负数强转为char类型问题？？？？
+	 * 由于char不能表示负数，负数强转为char类型会导致精度丢失
 	 * 
 	 * 运算符 Operator
 	 * 优先级，结合性
@@ -198,7 +198,7 @@ public class JavaSyntax {
 	 * 
 	 * 表达式，语句，块 Expressions, Statements, Blocks
 	 * i.表达式中可包含变量，运算符，方法调用，表达式运算后产生唯一的值
-	 * ii.语句由表达式构成
+	 * ii.语句由表达式构成，语句是完整的执行单元
 	 * 语句分为表达式语句，声明语句，流程控制语句
 	 * 表达式语句，声明语句以分号结束；流程控制语句中do-while语句使用分号结尾
 	 * iii.块由{}构成，块中可以包含零个或多个语句；块定义在类中
@@ -249,8 +249,8 @@ public class JavaSyntax {
 	 * 
 	 * do-while
 	 * do{
-	 * 		statement;
-	 * }while(boolean-expression);
+     * 		statement;
+     * }while(boolean-expression);
 	 * do-while语句循环体至少会执行一次
 	 * 
 	 * for
@@ -326,8 +326,15 @@ public class JavaSyntax {
 	 * copyOfRange	从指定索引赋值数组
 	 */
 
-	public static void main(String[] args) {
-		Integer i = Integer.parseInt("10",16);
-		System.out.println(i);
-	}
+    public static void main(String[] args) {
+        String str = "3";
+        switch(str){
+            case "1":
+                System.out.println("1");break;
+            case "2":
+                System.out.println("2");break;
+            default:
+                System.out.println("default");
+        }
+    }
 }
