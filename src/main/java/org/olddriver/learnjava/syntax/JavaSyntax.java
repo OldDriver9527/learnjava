@@ -1,7 +1,9 @@
 package org.olddriver.learnjava.syntax;
 
-
-public class JavaSyntax {
+/**
+ * 20200421
+ */
+public class JavaSyntax{
 	/*
 	 * java
 	 * java既是一种高级编程语言，也是一个平台
@@ -135,7 +137,7 @@ public class JavaSyntax {
 	 * 
 	 * 运算符 Operator
 	 * 优先级，结合性
-	 * 优先级高的运算符优先执行
+	 * 优先级高的运算符优先执行，优先级相等按照结合性决定运算顺序
 	 * 对于二元运算符，左操作数在右操作数之前计算；执行计算前，左右操作数都计算完毕
 	 * 
 	 * 赋值运算符 Assignment Operator
@@ -259,17 +261,17 @@ public class JavaSyntax {
 	 * }
 	 * i.初始化表达式在循环开始时执行一次
 	 * 终止表达式为false循环终止
-	 * 增加表达式在每次迭代后执行一次
+	 * 增量表达式在每次迭代后执行一次
 	 * ii.初始化表达式中声明的变量，随循环的执行而创建，随着循环的结束而消失；初始化表达式中声明的变量
-	 * 可以在终止表达式，增加表达式中使用
+	 * 可以在终止表达式，增量表达式中使用
 	 * 
 	 * foreach 增强for语句
 	 * for(LocalVariableType VariableDeclaratorId:Expression){
 	 * 		statement;
 	 * }
-	 * 增强for循环用于迭代数组及单列容器
+	 * 增强for循环用于迭代数组及单列容器,尽量使用foreach语句
 	 * 
-	 * break
+	 * break语句
 	 * break语句用于终止switch语句，for语句，while语句，do-while语句
 	 * break语句具有两种形式，具有标签，不具有标签；在嵌套循环中，不带标签的break语句默认终止当前循环，带标签的break语句
 	 * 可以终止指定循环
@@ -284,15 +286,15 @@ public class JavaSyntax {
 	 * 
 	 * 方法
 	 * 类中可以被调用执行的代码，定义了类的行为
-	 * i.方法声明
-	 * modifier	returnType	methodName(argument list)exception list{
+	 * i.方法声明，包含六部分
+	 * modifier	returnType  methodName(argument list)exception list{
 	 * 		method body
 	 * }
 	 * ii.方法只有被调用时才会执行
 	 * iii.调用对象方法的行为称为向对象发送调用请求
-	 * iiii.方法签名由方法名及参数类型构成
+	 * iiii.方法签名由方法名及参数列表构成
 	 * iiiii.overload
-	 * 同一类中，多个方法共享同一名称的情况称为重载
+	 * 同一类中，多个方法共享同一名称的情况称为重载。应谨慎使用，会降低代码可读性
 	 * 同一个类中多个方法可以共享一个名称，只要其方法签名不同即可
 	 * 方法重载与返回值类型无关，因为编译器无法根据返回值类型区分方法
 	 * iiiiii.返回值类型声明为void，方法不返回返回值
@@ -301,7 +303,7 @@ public class JavaSyntax {
 	 * 存储数据的容器，数组能够存储基本数据类型值以及引用数据类型值
 	 * 数组能够限制元素类型
 	 * 数组的存储效率，随机访问效率高于容器，但付出的代价是数组长度不可变
-	 * 数组对象是运行时创建的，数组对象能够调用Object类中的方法
+	 * 数组对象是运行时创建的，通过数组对象能够调用Object类中的方法
 	 * i.声明数组引用
 	 * 元素类型[] 数组名;
 	 * 元素类型可以是接口，抽象类；[]个数指定数组维度
@@ -325,16 +327,7 @@ public class JavaSyntax {
 	 * copyOf	从起始位置复制数组
 	 * copyOfRange	从指定索引赋值数组
 	 */
-
-    public static void main(String[] args) {
-        String str = "3";
-        switch(str){
-            case "1":
-                System.out.println("1");break;
-            case "2":
-                System.out.println("2");break;
-            default:
-                System.out.println("default");
-        }
-    }
 }
+
+
+

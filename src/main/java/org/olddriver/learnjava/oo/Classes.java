@@ -1,16 +1,31 @@
 package org.olddriver.learnjava.oo;
 
+/**
+ * 20200421
+ * part 2
+ */
 public class Classes {
-	/**
+	/*
 	 * 声明类
 	 * 声明类会定义一个新引用类型， 声明类分为普通类声明，枚举声明
 	 * i.类声明格式
 	 * modifier class ClassName extends SuperClassName implements Interface List{
-	 * 		constructor,field,method
+	 * 		field,method,class,interface
 	 * }
-	 * 类仅有两种访问权限，public及package
+	 * 类修饰符包括public，protected，private，abstract，static，final，strictfp
+	 * 顶级类仅有两种访问权限，public及package
 	 * 被public修饰的类能够在任意位置使用，package权限的类仅能在当前包中使用
-	 * 
+	 *
+	 * 类相关概念
+	 * 顶级类(top level class) 非嵌套类的类
+	 * 嵌套类(nested class) 声明在类或接口内的类，嵌套类又分为
+	 *                      成员类(member class)   具有名称，定义在块，方法，构造器以外的类
+	 *                      局部类(local class)    具有名称，定义在块，方法，构造器内的类
+	 *                      匿名类(anonymous class)    不具有名称
+	 *
+	 * 内部类(inner class) 非static嵌套类
+	 *
+	 *
 	 * 成员变量与局部变量区别
 	 * i.成员变量随对象的创建而创建，随对象的销毁而销毁
 	 * 	 局部变量随所属区域的执行而创建，随所属区域的结束而消失
@@ -76,4 +91,10 @@ public class Classes {
 	 * iii.final修饰的类不能被继承，final类中方法默认使用final修饰
 	 * 
 	 */
+
+
+	class Demo{
+	    private String name;
+
+    }
 }
