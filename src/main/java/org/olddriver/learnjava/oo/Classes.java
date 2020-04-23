@@ -15,6 +15,7 @@ public class Classes {
 	 * 类修饰符包括public，protected，private，abstract，static，final，strictfp
 	 * 顶级类仅有两种访问权限，public及package
 	 * 被public修饰的类能够在任意位置使用，package权限的类仅能在当前包中使用
+	 * static只用于修饰成员类
 	 *
 	 * 类相关概念
 	 * 顶级类(top level class) 非嵌套类的类
@@ -22,13 +23,11 @@ public class Classes {
 	 *                      成员类(member class)   具有名称，定义在块，方法，构造器以外的类
 	 *                      局部类(local class)    具有名称，定义在块，方法，构造器内的类
 	 *                      匿名类(anonymous class)    不具有名称
+	 *                      内部类(inner class) 非static的嵌套类
 	 *
 	 * 声明字段
 	 * modifier type fieldName;
-	 * 子类继承父类，父接口中所有public，protected，包访问权限字段
-	 * 子类中声明字段会隐藏父类，父接口中所有可访问同名字段，与字段类型，static无关
 	 * static字段
-	 * 类中被static修饰的字段称为类变量，非static字段称为实例变量
 	 * 类变量被类的所有实例共享，内存中仅存在一份
 	 * final字段
 	 * 被final修饰的字段必须进行显式初始化
@@ -37,37 +36,52 @@ public class Classes {
 	 * transient字段
 	 * 被transient修饰的字段不参与序列化
 	 * volatile字段
-	 *
+	 * 字段继承，隐藏
+	 * 子类继承父类，父接口中所有public，protected，package access字段，且字段未被子类字段隐藏
+     * 子类中字段会隐藏父类，父接口中所有可访问同名字段，与字段类型，static无关
+	 * 实例变量与局部变量区别
+     * i.实例变量随对象的创建而创建，随对象的销毁而销毁
+     * 	 局部变量随所属区域的执行而创建，随所属区域的结束而消失
+     * ii.实例变量存储在堆内存中，局部变量存储在栈内存中
+     * iii.实例变量存在默认初始化值；局部变量不存在默认初始化值，在使用局部变量之前要确保其已经初始化完毕
+     * iiii.实例变量定义在类中，局部变量定义在块，方法，构造器中
+     *
 	 * 声明方法
 	 * abstract方法
 	 * 抽象方法仅有方法声明，无方法体
 	 * 抽象方法必须定义在抽象类或枚举中
 	 * abstract方法不能使用private，static，final修饰
 	 * static方法
-	 * static方法称为类方法，非static方法称为实例方法
-	 * 实例方法中可以使用this，super关键字引用当前对象
 	 * final方法
 	 * final方法不能在子类中重写
 	 * private方法及final类中方法行为同final方法
 	 * native方法
-	 * 本地方法使用平台相关代码实现，native方法不需定义方法体，表示忽略方法体
+	 * native方法使用平台相关代码实现，native方法不需定义方法体，表示忽略方法体
 	 * 方法返回值
      * 方法返回值类型为void，方法不返回返回值
      * 子类重写父类方法时，方法返回值类型可以是原返回值类型的子类
      * 方法异常
      * 使用throws关键字声明受查异常，这些异常可能来自构造器或方法
-     * 子类继承父类中public，protected，package access 方法，且该方法未被子类方法重写和隐藏
-     * 子类继承父接口中abstract，default方法，不继承父接口中private，static方法，且该方法未被子类方法重写
-     * 子类中实例方法会重写父类中的实例方法
+     * 继承，重写，隐藏
+     * 子类继承父类中public，protected，package access方法，当该方法未被子类方法重写和隐藏
+     * 子类继承父接口中abstract，default方法，不继承static方法，，当该方法未被子类方法重写
+     * 子类中实例方法可以重写父类，父接口中实例方法
+     * 子类中非抽象方法重写父类，父接口中抽象方法称为实现
+     * 子类中类方法可以隐藏父类中类方法
      *
+     * 成员类，成员接口
+     * 子类继承父类，父接口中所有非private成员类，成员接口，当该成员未被子类隐藏
+     * 子类中声明成员类或成员接口，会隐藏父类，父接口中可访问的同名成员类或成员接口
+     * 可以使用static修饰成员类，成员接口隐式static修饰
+     * 静态成员类，静态成员接口与静态方法类似，不能在其中调用当前类中非static成员
      *
-	 * 实例变量与局部变量区别
-	 * i.实例变量随对象的创建而创建，随对象的销毁而销毁
-	 * 	 局部变量随所属区域的执行而创建，随所属区域的结束而消失
-	 * ii.实例变量存储在堆内存中，局部变量存储在栈内存中
-	 * iii.实例变量存在默认初始化值；局部变量不存在默认初始化值，在使用局部变量之前要确保其已经初始化完毕
-	 * iiii.实例变量定义在类中，局部变量定义在块，方法，构造器中
-	 * 
+     * 实例初始化语句(Instance Initializers)
+     * 专门用于对象初始化，每当创建类实例时执行一次
+     * 实例初始化语句中能够使用this，super访问当前对象
+     *
+     * 静态初始化语句(Static Initializers)
+     * 用于类初始化，在初始化类时执行一次
+     *
 	 * 构造器	Constructor
 	 * 类中特殊方法，专门用于为对象进行初始化，在创建对象时被调用执行
 	 * 构造器特点
@@ -98,7 +112,16 @@ public class Classes {
 	 * ii.当形参类型为基本数据类型，形式参数的修改不会影响到实际参数
 	 * iii.当形参类型为引用数据类型，形式参数的修改影响实参
 	 * iiii.对于boolean以外的七种基本数据类型值，当实参数据类型等级低于形参数据类型等级时，实参会进行自动类型提升
-	 * 
+	 *
+	 * 声明枚举
+	 * modifier enum EnumName implements Interfaces List{
+	 *      Identifier,Identifier;
+	 * }
+	 * 枚举不能使用abstract，final修饰
+	 * 嵌套枚举隐式static修饰
+	 * 枚举的直接父类是Enum类
+	 * 枚举仅有通过枚举值定义的实例，没有其他实例，不能实例化枚举实例
+	 *
 	 * 可变参数
 	 * 当无法确定方法参数列表中某种类型参数个数时可以使用可变参数
 	 * 可变参数在参数类型后添加省略号，是数组参数的简写
@@ -129,4 +152,6 @@ public class Classes {
 	 * iii.final修饰的类不能被继承，final类中方法默认使用final修饰
 	 * 
 	 */
+
+
 }

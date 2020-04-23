@@ -13,7 +13,8 @@ public class ObjectOrientedProgrammingConcept {
 	 * 类    Class
 	 * 类是对具有相同属性和行为的对象的抽象，类是创建对象的蓝图；
 	 * 类成员包含字段(Field or Member variable)，方法(Method)，类(Class)，接口(Interface)。类中还可以定义构造器(Constructor)，实例初始化语句(InstanceInitializer)，静态初始化语句(StaticInitializer)
-	 * 非static字段称为实例变量，static字段称为类变量
+	 * 类中static字段称为类变量，非static字段称为实例变量
+	 * 类中static方法称为类方法，非static方法称为实例方法
 	 * 类是java程序的基本单元
 	 * 
 	 * 接口	Interface

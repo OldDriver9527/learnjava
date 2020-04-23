@@ -1,7 +1,7 @@
 package org.olddriver.learnjava.oo;
 
 public class JavaVirtualMachineRunTimeDataAreas {
-	/**
+	/*
 	 * java虚拟机运行时数据区划分为6部分
 	 * i.pc寄存器 pc(program counter) Register 
 	 * ii.栈 Stack 
