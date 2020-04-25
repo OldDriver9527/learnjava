@@ -4,7 +4,7 @@ package org.olddriver.learnjava.oo;
  * 20200421
  * part 2
  */
-public class Classes {
+public class Classes{
 	/*
 	 * 声明类
 	 * 声明类会定义一个新引用类型， 声明类分为普通类声明，枚举声明
@@ -13,9 +13,9 @@ public class Classes {
 	 * 		field,method,class,interface
 	 * }
 	 * 类修饰符包括public，protected，private，abstract，static，final，strictfp
+	 * protected，private，static只用于修饰成员类
 	 * 顶级类仅有两种访问权限，public及package
 	 * 被public修饰的类能够在任意位置使用，package权限的类仅能在当前包中使用
-	 * static只用于修饰成员类
 	 *
 	 * 类相关概念
 	 * 顶级类(top level class) 非嵌套类的类
@@ -37,7 +37,7 @@ public class Classes {
 	 * 被transient修饰的字段不参与序列化
 	 * volatile字段
 	 * 字段继承，隐藏
-	 * 子类继承父类，父接口中所有public，protected，package access字段，且字段未被子类字段隐藏
+	 * 子类继承父类，父接口中所有public，protected，package access字段，只要字段未被子类字段隐藏
      * 子类中字段会隐藏父类，父接口中所有可访问同名字段，与字段类型，static无关
 	 * 实例变量与局部变量区别
      * i.实例变量随对象的创建而创建，随对象的销毁而销毁
@@ -64,15 +64,15 @@ public class Classes {
      * 方法异常
      * 使用throws关键字声明受查异常，这些异常可能来自构造器或方法
      * 方法继承，重写，隐藏
-     * 子类继承父类中public，protected，package access方法，当该方法未被子类方法重写和隐藏
-     * 子类继承父接口中abstract，default方法，当该方法未被子类方法重写，不继承static方法
+     * 子类继承父类中public，protected，package access方法，只要该方法未被子类方法重写和隐藏
+     * 子类继承父接口中abstract，default方法，只要该方法未被子类方法重写，不继承static方法
      * 子类中实例方法可以重写父类，父接口中实例方法
      * 子类中非抽象方法重写父类，父接口中抽象方法称为实现
      * 子类中类方法可以隐藏父类中类方法
      *
-     * 成员类，成员接口
-     * 子类继承父类，父接口中所有非private成员类，成员接口，当该成员未被子类隐藏
-     * 子类中声明成员类或成员接口，会隐藏父类，父接口中可访问的同名成员类或成员接口
+     * 成员类，成员接口继承，隐藏
+     * 子类继承父类，父接口中所有非private成员类，成员接口，只要该成员未被子类隐藏
+     * 子类中成员类和成员接口，会隐藏父类，父接口中可访问的同名成员类和成员接口
      * 可以使用static修饰成员类，成员接口隐式static修饰
      * 静态成员类，静态成员接口与静态方法类似，不能在其中调用当前类中非static成员
      *
@@ -121,14 +121,12 @@ public class Classes {
 	 * 枚举不能使用abstract，final修饰
 	 * 嵌套枚举隐式static修饰
 	 * 枚举直接父类是Enum类
-	 * 枚举仅能通过枚举常量创建实例，不能通过其他方式创建枚举实例
-	 *
+	 * 枚举仅能通过枚举常量创建对象，不能通过其他方式创建枚举对象
 	 * 枚举常量(Enum Constants)
 	 * 枚举常量标识符所有字母大写，不允许使用修饰符修饰枚举常量
-	 * 枚举常量标识符后可以定义参数列表及类体，采用匿名类的形式创建枚举类子类实例
+	 * 枚举常量标识符后可以定义参数列表及类体，采用匿名类的形式创建枚举常量，当使用无参构造器创建枚举常量，参数列表可省
 	 * 类体中不能定义构造器，抽象方法
 	 * 由于枚举常量仅对应唯一一个实例，枚举常量之间比较时可以使用==替代equals方法
-	 *
 	 * 枚举体
 	 * 枚举体中可以定义字段，方法，类，接口，构造器，静态初始化语句，实例初始化语句
 	 * 枚举体中构造器只能private修饰，默认构造器使用private修饰
