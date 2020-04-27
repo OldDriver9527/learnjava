@@ -7,13 +7,13 @@ package org.olddriver.learnjava.oo;
 public class Classes{
 	/*
 	 * 声明类
-	 * 声明类会定义一个新引用类型， 声明类分为普通类声明，枚举声明
+	 * 声明类会定义一个新引用类型，声明类分为普通类声明，枚举声明
 	 * i.类声明格式
 	 * modifier class ClassName extends SuperClassName implements Interface List{
 	 * 		field,method,class,interface
 	 * }
 	 * 类修饰符包括public，protected，private，abstract，static，final，strictfp
-	 * protected，private，static只用于修饰成员类
+	 * protected，private，static只用于修饰成员类，不能修饰顶级类
 	 * 顶级类仅有两种访问权限，public及package
 	 * 被public修饰的类能够在任意位置使用，package权限的类仅能在当前包中使用
 	 *
@@ -27,6 +27,7 @@ public class Classes{
 	 *
 	 * 声明字段
 	 * modifier type fieldName;
+	 * 字段修饰符包括public，protected，private，static，final，transient，volatile
 	 * static字段
 	 * 类变量被类的所有实例共享，内存中仅存在一份
 	 * final字段
@@ -43,10 +44,11 @@ public class Classes{
      * i.实例变量随对象的创建而创建，随对象的销毁而销毁
      * 	 局部变量随所属区域的执行而创建，随所属区域的结束而消失
      * ii.实例变量存储在堆内存中，局部变量存储在栈内存中
-     * iii.实例变量存在默认初始化值；局部变量不存在默认初始化值，在使用局部变量之前要确保其已经初始化完毕
-     * iiii.实例变量定义在类中，局部变量定义在块，方法，构造器中
+     * iii.实例变量存在默认初始化值；局部变量不存在默认初始化值，在使用局部变量之前要确保其已经初始化完毕，否则编译不通过
+     * iiii.实例变量定义在块，方法，构造器以外，局部变量定义在块，方法，构造器以内
      *
 	 * 声明方法
+	 * 方法修饰符包括public，protected，private，abstract，static，final，native，synchronized
 	 * abstract方法
 	 * 抽象方法仅有方法声明，无方法体
 	 * 抽象方法必须定义在抽象类或枚举中
@@ -66,6 +68,9 @@ public class Classes{
      * 方法继承，重写，隐藏
      * 子类继承父类中public，protected，package access方法，只要该方法未被子类方法重写和隐藏
      * 子类继承父接口中abstract，default方法，只要该方法未被子类方法重写，不继承static方法
+     * 当子类继承父接口中默认方法与父类中实例方法冲突，父类中实例方法优先于接口中默认方法
+     * 当子类继承AB两个接口AB中默认方法冲突，B接口继承A接口，B接口中默认方法优先于A接口中默认方法
+     * 当子类继承多个独立接口中默认方法冲突，必须在子类中对默认方法进行重写
      * 子类中实例方法可以重写父类，父接口中实例方法
      * 子类中非抽象方法重写父类，父接口中抽象方法称为实现
      * 子类中类方法可以隐藏父类中类方法
@@ -74,7 +79,7 @@ public class Classes{
      * 子类继承父类，父接口中所有非private成员类，成员接口，只要该成员未被子类隐藏
      * 子类中成员类和成员接口，会隐藏父类，父接口中可访问的同名成员类和成员接口
      * 可以使用static修饰成员类，成员接口隐式static修饰
-     * 静态成员类，静态成员接口与静态方法类似，不能在其中调用当前类中非static成员
+     * 静态成员类，静态成员接口与静态方法类似，不能在其中调用当前类中实例变量，实例方法
      *
      * 实例初始化语句(Instance Initializers)
      * 专门用于对象初始化，每当创建类实例时执行一次
@@ -118,15 +123,16 @@ public class Classes{
 	 * modifier enum EnumName implements Interfaces List{
 	 *      ENUMCONSTANT,ENUMCONSTANT;
 	 * }
-	 * 枚举不能使用abstract，final修饰
-	 * 嵌套枚举隐式static修饰
+	 * 修饰符包含public，protected，private，static，枚举不能使用abstract，final修饰
+	 * protected，private，static仅能修饰嵌套枚举，嵌套枚举隐式static修饰
+	 * 不存在局部枚举
 	 * 枚举直接父类是Enum类
 	 * 枚举仅能通过枚举常量创建对象，不能通过其他方式创建枚举对象
 	 * 枚举常量(Enum Constants)
-	 * 枚举常量标识符所有字母大写，不允许使用修饰符修饰枚举常量
+	 * 枚举常量定义枚举对象，枚举常量标识符所有字母大写，不允许使用修饰符修饰枚举常量
 	 * 枚举常量标识符后可以定义参数列表及类体，采用匿名类的形式创建枚举常量，当使用无参构造器创建枚举常量，参数列表可省
 	 * 类体中不能定义构造器，抽象方法
-	 * 由于枚举常量仅对应唯一一个实例，枚举常量之间比较时可以使用==替代equals方法
+	 * 由于每个枚举常量仅创建唯一一个实例，枚举常量之间比较时可以使用==替代equals方法
 	 * 枚举体
 	 * 枚举体中可以定义字段，方法，类，接口，构造器，静态初始化语句，实例初始化语句
 	 * 枚举体中构造器只能private修饰，默认构造器使用private修饰
@@ -165,5 +171,4 @@ public class Classes{
 	 * iii.final修饰的类不能被继承，final类中方法默认使用final修饰
 	 * 
 	 */
-
 }

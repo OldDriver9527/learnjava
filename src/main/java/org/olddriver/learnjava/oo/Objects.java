@@ -1,6 +1,6 @@
 package org.olddriver.learnjava.oo;
 
-public class Objects {
+public class Objects{
 	/**
 	 * 创建对象
 	 * Type referenceName = new Constructor;
