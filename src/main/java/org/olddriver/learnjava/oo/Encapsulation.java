@@ -1,7 +1,11 @@
 package org.olddriver.learnjava.oo;
 
+/**
+ * 20200428
+ * part 2
+ */
 public class Encapsulation {
-    /**
+    /*
      * 封装	Encapsulation
      * i.将成员变量，成员方法包裹在类中，隐藏成员变量，仅对外暴露公共成员方法
      * ii.封装实现方式

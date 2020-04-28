@@ -1,5 +1,9 @@
 package org.olddriver.learnjava.oo;
 
+/**
+ * 20200428
+ * part 5
+ */
 public class JavaVirtualMachineRunTimeDataAreas {
 	/*
 	 * java虚拟机运行时数据区划分为6部分

@@ -2,7 +2,7 @@ package org.olddriver.learnjava.oo;
 
 /**
  * 20200425
- * part 3
+ * part 6
  */
 public interface Interfaces{
 	/*
@@ -25,6 +25,12 @@ public interface Interfaces{
 	 *                              局部接口(local interface)
 	 *                              匿名接口(anonymous interface)
 	 *
+	 * 接口成员
+	 * 若接口没有直接父接口，会在接口中隐式声明多个public abstract方法，这些方法与Object类中public实例方法对应，
+	 * 若接口中显式定义抽象方法与Object类中public实例方法对应，不会再隐式声明
+	 * 若接口中声明方法与Object类中final方法声明一致，编译不通过
+	 * 若接口中非抽象方法与Object类中public方法具有相同方法签名，仅返回值类型不同或异常列表不同，编译不通过
+     *
 	 * 字段声明
 	 * modifier type fieldName
 	 * 字段只能用public static final修饰，接口中字段隐式使用public static final修饰
@@ -90,18 +96,17 @@ public interface Interfaces{
 	 * 若重复注解包含@Inherited，容器注解必须包含@Inherited；若容器注解包含@Inherited，重复注解可以不包含@Inherited
 	 * 预定义注解
 	 * @Target
-	 * Target注解使用在注解声明中，指定注解适用的上下文
+	 * 指定注解适用的上下文
 	 * @Retention
+	 * 指定注解保留的时间长度
 	 * @Inherited
-	 * Inherited使用在注解声明中，指定使用在类C上的注解是否被C子类继承
+	 * 指定使用在类C上的注解是否被C子类继承
+	 * @Override
+	 * 在编译时检测方法是否重写父类或父接口中方法
 	 *
 	 * 函数式接口
-	 *
-	 *
-	 *
-	 *
-	 *
-	 *
+	 * 仅有一个抽象方法的接口，接口中与Object类中方法声明一致的方法除外
 	 */
+
 
 }

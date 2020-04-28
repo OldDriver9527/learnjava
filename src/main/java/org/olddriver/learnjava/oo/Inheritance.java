@@ -1,7 +1,11 @@
 package org.olddriver.learnjava.oo;
 
+/**
+ * 20204028
+ * part 3
+ */
 public class Inheritance {
-    /**
+    /*
      * 继承	Inheritance
 	 * 在现有类的基础上派生出新类称为继承，是复用代码的一种方式
 	 * 派生类称为子类，派生子类的类称为父类

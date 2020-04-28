@@ -1,7 +1,15 @@
 package org.olddriver.learnjava.oo;
 
+/**
+ * 20200428
+ * part 7
+ */
 public class Objects{
-	/**
+	/*
+	 * 类的实例和数组都是对象
+	 * 通过类实例创建表达式(class instance creation expression)显示创建类实例
+	 * 通过数组创建表达式(array creation expression)显示创建数组
+	 *
 	 * 创建对象
 	 * Type referenceName = new Constructor;
 	 * 创建对象可分为三部分，声明对象引用，对象实例化，对象初始化
