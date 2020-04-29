@@ -2,11 +2,11 @@ package org.olddriver.learnjava.oo;
 
 /**
  * 20204028
- * part 4
+ * part 8
  */
 public class Polymorphism {
     /*
-     * 多态	Polymorphism
+     * 多态(Polymorphism)
      * 多态指子类中既能定义特有内容，又能分享父类中共有内容
      *
      * 多态体现

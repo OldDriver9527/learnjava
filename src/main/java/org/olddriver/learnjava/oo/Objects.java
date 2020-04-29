@@ -2,7 +2,7 @@ package org.olddriver.learnjava.oo;
 
 /**
  * 20200428
- * part 7
+ * part 4
  */
 public class Objects{
 	/*

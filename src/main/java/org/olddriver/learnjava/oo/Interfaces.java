@@ -2,9 +2,9 @@ package org.olddriver.learnjava.oo;
 
 /**
  * 20200425
- * part 6
+ * part 3
  */
-public interface Interfaces{
+public interface Interfaces {
 	/*
 	 * 声明接口
 	 * 声明接口会创建新引用类型，接口声明分为普通接口声明和注解声明
@@ -13,7 +13,8 @@ public interface Interfaces{
 	 * 		field,method,class,interface
 	 * }
 	 * 接口可以使用public，protected，private，abstract，static修饰
-	 * protected，private，static仅适用于成员接口，不能修饰顶级接口
+	 * static仅适用于成员接口，不能修饰顶级接口
+	 * protected，private仅适用于类中的成员接口
 	 * 顶级接口仅有两种访问权限，public及package
 	 * public接口可以在任意位置使用，package access接口只能在当前包中使用
 	 * 接口隐式使用abstract修饰
@@ -107,6 +108,4 @@ public interface Interfaces{
 	 * 函数式接口
 	 * 仅有一个抽象方法的接口，接口中与Object类中方法声明一致的方法除外
 	 */
-
-
 }
