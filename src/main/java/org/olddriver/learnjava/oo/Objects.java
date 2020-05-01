@@ -12,7 +12,7 @@ public class Objects{
 	 *
 	 * 创建对象
 	 * Type referenceName = new Constructor;
-	 * 创建对象可分为三部分，声明对象引用，对象实例化，对象初始化
+	 * 创建对象可分为三部分，声明对象引用变量，对象实例化，对象初始化
 	 * i.声明对象引用
 	 * Type referenceName;
 	 * 声明对象引用并不会创建对象

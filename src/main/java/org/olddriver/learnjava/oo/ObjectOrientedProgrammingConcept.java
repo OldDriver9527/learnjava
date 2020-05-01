@@ -4,7 +4,7 @@ package org.olddriver.learnjava.oo;
  * 20200421
  * part 1
  */
-public class ObjectOrientedProgrammingConcept {
+public class ObjectOrientedProgrammingConcept{
 	/*
 	 * 对象 Object
 	 * 软件对象和现实中对象类似，对象可理解为是一种奇特变量，由属性和行为构成
@@ -15,7 +15,6 @@ public class ObjectOrientedProgrammingConcept {
 	 * 类成员包含字段(Field or Member variable)，方法(Method)，类(Class)，接口(Interface)。类中还可以定义构造器(Constructor)，实例初始化语句(InstanceInitializer)，静态初始化语句(StaticInitializer)
 	 * 类中static字段称为类变量，非static字段称为实例变量
 	 * 类中static方法称为类方法，非static方法称为实例方法
-	 * 类是java程序的基本单元
 	 * 
 	 * 接口	Interface
 	 * 接口定义类与外界交互的规则。
