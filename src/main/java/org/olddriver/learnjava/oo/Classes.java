@@ -91,11 +91,11 @@ public class Classes{
      * 可以使用static修饰类中成员类，类中成员接口隐式static修饰
      * 静态成员类，静态成员接口与静态方法类似，不能在其中调用当前类中实例变量，实例方法
      *
-     * 实例初始化语句(Instance Initializers)
+     * 实例初始化器(Instance Initializers)
      * 专门用于对象初始化，每当创建类实例时执行一次
      * 实例初始化语句中能够使用this，super访问当前对象
      *
-     * 静态初始化语句(Static Initializers)
+     * 静态初始化器(Static Initializers)
      * 用于类初始化，在初始化类时执行一次
      *
 	 * 构造器(Constructor)
@@ -145,7 +145,7 @@ public class Classes{
 	 * 类体中不能定义构造器，抽象方法
 	 * 由于每个枚举常量仅创建唯一一个实例，枚举常量之间比较时可以使用==替代equals方法
 	 * 枚举体
-	 * 枚举体中可以定义字段，方法，类，接口，构造器，静态初始化语句，实例初始化语句
+	 * 枚举体中可以定义字段，方法，类，接口，构造器，静态初始化器，实例初始化器
 	 * 枚举体中构造器只能private修饰，默认构造器使用private修饰
 	 * 枚举体中的构造器不能使用super访问父类构造器
 	 * 枚举体中隐式声明public static final字段，名称与枚举常量一致，初始化隐式字段时创建枚举常量
