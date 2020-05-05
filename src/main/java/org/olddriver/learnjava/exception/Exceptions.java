@@ -1,9 +1,12 @@
 package org.olddriver.learnjava.exception;
+
+import org.olddriver.learnjava.oo.Classes;
+
 /**
  * 20200520
  * part 1
  */
-public class Exceptions {
+public class Exceptions extends Classes {
     /*
      * 异常种类
      * Throwable及其子类表示异常
@@ -18,11 +21,5 @@ public class Exceptions {
      * 产生异步异常
      *
      * 异步异常
-     *
-     *
      */
-
-    public static void main(String[] args) {
-        throw new OutOfMemoryError();
-    }
 }
