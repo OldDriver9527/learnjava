@@ -155,11 +155,4 @@ public class Classes{
 	 * 枚举体中隐式声明public static 的 values()，获取封装枚举常量的数组
 	 * 枚举体中隐式声明public static 的 valueOf()，获取指定名称枚举常量
 	 */
-
-    private String test = "Classes";
-
-    public static void main(String[] args) {
-        Classes o = new Polymorphism();
-        System.out.println(o.test);
-    }
 }

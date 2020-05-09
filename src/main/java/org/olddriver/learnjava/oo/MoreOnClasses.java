@@ -19,7 +19,7 @@ public class MoreOnClasses {
      * Lambda表达式计算会创建函数式接口实例，不会导致Lambda体执行
      * LambdaParameters -> LambdaBody
      * Lambda参数对应函数式接口中抽象方法参数列表，参数类型可以显式声明，也可以推断，不能混合使用
-     * Lambda参数仅包有一个时，括号可选
+     * Lambda参数仅有一个，括号可选
      * Lambda体对应函数式接口中抽象方法实现，Lambda体可以是单个表达式或块
      *
      * Object类中方法
