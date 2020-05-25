@@ -54,18 +54,63 @@ public class Strings {
      *
      * 字符串生成器(StringBuilder)，字符串缓冲区(StringBuffer)
      * StringBuilder线程不安全，但单线程情况下效率高于StringBuffer
-     * StringBuilder与String类似，但StringBuilder中字符序列内容可以修改
-     * StringBuilder长度表示存储字符个数，容量表示已分配的能够存储字符个数，容量会在必要时自动扩充
+     * StringBuilder与String类似，同样包含字符序列，但StringBuilder中字符序列可以修改
+     * StringBuilder长度表示存储字符个数，容量表示已分配的字符存储量，容量会在必要时自动扩充
      * StringBuilder类方法
      * StringBuilder()  创建容量为16的StringBuilder
      * StringBuilder(CharSequence)  创建包含相同字符序列的StringBuilder，容量为16加字符序列长度
      * StringBuilder(int)   创建指定容量的StringBuilder
      * StringBuilder(String)    创建包含相同字符串的StringBuilder，容量为16加字符串长度
+     * setLength(int)   设置StringBuilder中字符序列长度
+     *                  若新长度小于当前长度，会截取字符序列
+     *                  若新长度大于当前长度，会使用null填充空位
+     * ensureCapacity   确保StringBuilder容量大于指定参数
+     *                  新容量应大于指定参数，且大于原容量2倍加2
+     * append(boolean)  将参数追加到StringBuilder字符序列末尾，会将参数转为String后追加
+     * append(char)
+     * append(char[])
+     * append(char[], int, int)
+     * append(double)
+     * append(float)
+     * append(int)
+     * append(long)
+     * append(Object)
+     * append(String)
+     * deleteCharAt(int)    删除指定索引处字符
+     * delete(int, int)     删除指定范围内字符序列，从起始索引开始，到结束索引-1结束
+     * insert(int, boolean) 在指定索引处插入参数，参数转变为String后插入
+     * insert(int, char)
+     * insert(int, char[])
+     * insert(int, char[], int, int)
+     * insert(int, double)
+     * insert(int, float)
+     * insert(int, int)
+     * insert(int, long)
+     * insert(int, Object)
+     * insert(int, String)
+     * setCharAt(int, char) 替换指定索引处字符
+     * replace(int, int, String)    使用指定参数替换索引范围内的字符序列，替换范围从起始索引开始，到结束索引-1结束
+     * reverse()    将字符序列反转
      *
-     *
-     *
+     * 创建字符串的两种方式
+     * i.使用字符串常量值创建String对象
+     * ii.使用构造器创建String对象
+     * 字符串连接符效率
      *
      *
      *
      */
+
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("hello");
+
+        sb.replace(0,4,"world");
+
+
+        System.out.println(sb);
+
+
+    }
 }
