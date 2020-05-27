@@ -6,7 +6,7 @@ package org.olddriver.learnjava.essentialclasses;
  */
 public class Strings {
     /*
-     * String类表示字符串，String类实例不可变，不能修改内容
+     * String类表示字符串，String类实例不可变，一旦初始化完毕，不能修改内容
      * 若希望修改字符串对象内容，只能创建新String对象
      *
      * String类方法
@@ -54,8 +54,9 @@ public class Strings {
      *
      * 字符串生成器(StringBuilder)，字符串缓冲区(StringBuffer)
      * StringBuilder线程不安全，但单线程情况下效率高于StringBuffer
-     * StringBuilder与String类似，同样包含字符序列，但StringBuilder中字符序列可以修改
+     * StringBuilder，StringBuffer与String类似，同样存储字符序列，但StringBuilder，StringBuffer中字符序列可以修改
      * StringBuilder长度表示存储字符个数，容量表示已分配的字符存储量，容量会在必要时自动扩充
+     * 在预知最终字符串长度情况下，可以设置容量，减少StringBuilder扩容次数
      * StringBuilder类方法
      * StringBuilder()  创建容量为16的StringBuilder
      * StringBuilder(CharSequence)  创建包含相同字符序列的StringBuilder，容量为16加字符序列长度
@@ -95,22 +96,20 @@ public class Strings {
      * 创建字符串的两种方式
      * i.使用字符串常量值创建String对象
      * ii.使用构造器创建String对象
-     * 字符串连接符效率
+     * 使用字符串常量值创建字符串，会在字符串常量池中寻找指定字符串对象返回引用，若字符串常量池中不存在指定对象，才会
+     * 创建该对象，并主动将对象加入字符串常量池中
+     * 使用构造器创建字符串对象，可能会在字符串常量池及堆中创建两个对象，并且不会主动将堆中对象加入字符串常量池中
      *
+     * 字符串连接符(+)
+     * +对Stirng重载
+     * 在Stirng初始化表达式中，使用字符串连接符连接多个字符串，编译器直接将多个字符串作为一个字符串处理
+     * 当String对象初始化完毕，再使用字符串连接符连接字符串，编译器通过隐式声明StringBuilder实现字符串连接，
+     * 不建议在循环中使用字符串连接符连接字符串，会导致创建多个StringBuilder中间对象
      *
-     *
+     * String格式化
+     * jdk5中实现C中格式化输出功能
+     * 格式化说明符语法
+     * %[argument_index$][flags][width][.precision]conversion
+     * 日期时间转换符包含两个字符，前缀字符为t或T，后缀字符表示使用日期时间格式
      */
-
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("hello");
-
-        sb.replace(0,4,"world");
-
-
-        System.out.println(sb);
-
-
-    }
 }
