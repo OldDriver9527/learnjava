@@ -56,12 +56,12 @@ public class Classes{
 	 * 方法修饰符包括public，protected，private，abstract，static，final，native，synchronized
 	 * abstract方法
 	 * 抽象方法仅有方法声明，无方法体
-	 * 抽象方法必须定义在抽象类或枚举中
+	 * 抽象方法必须定义在抽象类，枚举，接口6中
 	 * abstract方法不能使用private，static，final修饰
 	 * static方法
-	 * 类方法中不能调用本类中实例变量，实例方法
+	 * 类方法中不能通过简单名称调用本类中实例变量，实例方法
 	 * final方法
-	 * final方法不能在子类中重写
+	 * final方法不能在子类中重写，隐藏
 	 * private方法及final类中方法行为同final方法
 	 * native方法
 	 * native方法使用平台相关代码实现，native方法不需定义方法体，表示忽略方法体

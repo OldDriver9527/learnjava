@@ -329,5 +329,7 @@ public class JavaSyntax{
 	 * fill	使用指定值填充数组
 	 * copyOf	从起始位置复制数组
 	 * copyOfRange	从指定索引赋值数组
+	 *
+	 * https://github.com/Snailclimb/JavaGuide.git
 	 */
 }
