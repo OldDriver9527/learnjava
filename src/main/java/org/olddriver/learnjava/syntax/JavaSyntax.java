@@ -24,7 +24,7 @@ public class JavaSyntax{
 	 * 包名要求所有字母小写
 	 * 类名要求首字母大写，其后每个单词的首字母大写
 	 * 方法名要求首字母小写，其后每个单词首字母大写；方法名第一个单词应为动词
-	 * 类变量，实例变量要求首字母小写，其后每个单词首字母大写
+	 * 类变量，实例变量，局部变量要求首字母小写，其后每个单词首字母大写
 	 * 常量名要求所有字母大写，单词之间下划线分隔
 	 * 
 	 * 注释 comment
@@ -63,6 +63,7 @@ public class JavaSyntax{
 	 *  指程序中直接使用的数据，如整数常量值，浮点数常量值，字符常量值，字符串常量值，布尔常量值
 	 *  i.整数常量值
 	 *  整数常量值默认int类型，内存中占4byte。常量值后添加L，表示long类型，内存中占8字节。
+	 *  若整数常量值超出int取值范围，未加L，编译无法通过
 	 *  整数常量值存在四种表示形式，分为二进制(前缀0b)，八进制(前缀0)，十进制，十六进制(前缀0x)
 	 *  一个二进制位称为一个比特位（bit）
 	 *  八个二进制位称为一个字节（byte）
@@ -75,6 +76,7 @@ public class JavaSyntax{
 	 *  ii.浮点数常量值
 	 *  浮点数常量值默认double类型，内存中占8byte。常量值后添加F，表示float类型，内存中占4byte
 	 *  单精度浮点数，双精度浮点数区别在于十进制位数不同，单精度十进制位数为8，双精度十进制位数为17
+	 *  若浮点数常量值十进制位数超过17，会进行截取
 	 *  浮点数常量值存在两种表示形式，十进制，科学计数法
 	 *  科学计数法中E表示十的幂次，E后的数字必须是整数
 	 *  科学计数法表示的常量值默认double类型
@@ -101,6 +103,7 @@ public class JavaSyntax{
 	 * java属于强类型语言，使用变量前必须声明，指定类型变量只能接收同一类型值
 	 * 声明变量的格式 修饰符 数据类型 变量名；
 	 * i.数据类型
+	 * java是强类型语言，声明变量时必须指定数据类型
 	 * java中包含两种数据类型，基本数据类型，引用数据类型
 	 * 基本数据类型 Primitive Data Types
 	 * byte		占1byte	-128~127					
@@ -109,7 +112,7 @@ public class JavaSyntax{
 	 * long		占8byte	-2^63~2^63-1
 	 * float		占4byte，十进制位数为8位
 	 * double	占8byte，十进制位数为17位
-	 * char		占2byte 0~65535
+	 * char		占2byte 0~2^16-1，用于表示unicode字符集中的字符，char类型变量存储的是unicode编码值，因此char类型能够与int类型转换
 	 * boolean
 	 * 引用数据类型 Reference Data Types
 	 * 引用数据类型包括，类，接口，数组类型。引用数据类型由用户自定义
@@ -286,7 +289,7 @@ public class JavaSyntax{
 	 * 方法
 	 * 类中可以被调用执行的代码，定义了类的行为
 	 * i.方法声明，包含六部分
-	 * modifier	returnType  methodName(argument list)exception list{
+	 * modifier	returnType  methodName(argument list) throws exception list{
 	 * 		method body
 	 * }
 	 * ii.方法只有被调用时才会执行
@@ -329,7 +332,11 @@ public class JavaSyntax{
 	 * fill	使用指定值填充数组
 	 * copyOf	从起始位置复制数组
 	 * copyOfRange	从指定索引赋值数组
-	 *
-	 * https://github.com/Snailclimb/JavaGuide.git
+	 * iiiiiiii.补充
+	 * 数组对象中的元素存在默认初始化值
 	 */
+    public static void main(String[] args) {
+        double d = 1.12345678901234567890;
+        System.out.println(d);
+    }
 }
