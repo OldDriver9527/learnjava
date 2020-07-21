@@ -335,8 +335,4 @@ public class JavaSyntax{
 	 * iiiiiiii.补充
 	 * 数组对象中的元素存在默认初始化值
 	 */
-    public static void main(String[] args) {
-        double d = 1.12345678901234567890;
-        System.out.println(d);
-    }
 }
