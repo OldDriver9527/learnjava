@@ -12,7 +12,7 @@ public class MoreOnClasses {
      * this还能用于构造器调用语句，表示类或接口类型
      *
      * super
-     * super作为基本表达式使用时，表示当前对象引用，但对象当作父类类型对待，不能输出super
+     * super作为基本表达式使用时，表示当前对象转型为父类类型的引用，不能输出super
      * super还能用于父类构造器调用语句，表示父类类型
      *
      * Lambda表达式(Lambda Expression)

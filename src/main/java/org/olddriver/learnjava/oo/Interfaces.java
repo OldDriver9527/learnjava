@@ -28,7 +28,7 @@ public interface Interfaces {
 	 *                              匿名接口(anonymous interface)
 	 *
 	 * 接口成员
-	 * 若接口没有直接父接口，会在接口中隐式声明多个public abstract方法，这些方法与Object类中public实例方法对应，
+	 * 若接口没有直接父接口，会在接口中隐式声明多个public abstract方法，这些方法与Object类中public实例方法对应(hashCode，equals，toString)，
 	 * 若接口中显式定义抽象方法与Object类中public实例方法对应，不会再隐式声明
 	 * 默认方法不能重写Object类中方法，抽象方法不能重写Object类中final方法
 	 * 抽象方法重写Object类中方法时返回值类型必须相同
