@@ -13,14 +13,14 @@ public class InsertionSort {
      * @param targetArr
      */
     public static void insertionSort(int[] targetArr){
-//        int j;
+        int j;
         for(int i = 1 ; i < targetArr.length ; i++){
-//            int temp = targetArr[i];
-            for(int j = i ; j > 0 && targetArr[j] < targetArr[j-1] ; j--){
-//                    targetArr[j] = targetArr[j-1];
-                    swap(targetArr,j,j-1);
+            int temp = targetArr[i];
+            for(j = i ; j > 0 && temp < targetArr[j-1] ; j--){
+                    targetArr[j] = targetArr[j-1];
+//                    swap(targetArr,j,j-1);
             }
-//            targetArr[j] = temp;
+            targetArr[j] = temp;
         }
     }
 
@@ -31,11 +31,10 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {41,2,33,14,25,76,47,28,19,19};
-//        int[] arr = {9,8,7,6,5,4,3,2,1};
+//        int[] arr = {41,2,33,14,25,76,47,28,19,19};
+        int[] arr = {9,8,7,6,5,4,3,2,1};
         insertionSort(arr);
         System.out.println(Arrays.toString(arr));
-
     }
 
 }
