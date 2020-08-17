@@ -1,4 +1,4 @@
-package org.olddriver.learnAlgorithm;
+package org.olddriver.learnalgorithm;
 
 /**
  * 20200809

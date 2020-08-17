@@ -1,4 +1,4 @@
-package org.olddriver.learnAlgorithm.sort;
+package org.olddriver.learnalgorithm.sort;
 
 import java.util.Arrays;
 
