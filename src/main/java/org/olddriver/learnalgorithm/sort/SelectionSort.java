@@ -1,7 +1,5 @@
 package org.olddriver.learnalgorithm.sort;
 
-import java.util.Arrays;
-
 public class SelectionSort {
 
     /**
@@ -13,9 +11,8 @@ public class SelectionSort {
      * @param targetArr
      */
     public static void selectionSort(int[] targetArr){
-        int minValueIndex = 0;
         for(int i = 0 ; i < targetArr.length - 1 ; i ++ ){
-            minValueIndex = i;
+            int minValueIndex = i;
             for(int j = i+1 ; j < targetArr.length ; j++){
                 minValueIndex = targetArr[j] < targetArr[minValueIndex] ? j : minValueIndex;
             }
@@ -27,13 +24,6 @@ public class SelectionSort {
         int temp = targetArr[i];
         targetArr[i] = targetArr[j];
         targetArr[j] = temp;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {41,2,33,14,25,76,47,28,19,19};
-        selectionSort(arr);
-        System.out.println(Arrays.toString(arr));
-
     }
 
 }
