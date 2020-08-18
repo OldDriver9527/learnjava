@@ -4,7 +4,7 @@ package org.olddriver.learnjava.oo;
  * 20200421
  * part 2
  */
-public abstract class Classes {
+public class Classes {
 	/*
 	 * 声明类
 	 * 声明类会定义一个新引用类型，声明类分为普通类声明，枚举声明
@@ -99,7 +99,7 @@ public abstract class Classes {
      *
      * 实例初始化器(Instance Initializers)
      * 专门用于对象初始化，每当创建类实例时执行一次；
-     * 实例初始化器中的语句会被编译器移动到不含this语句构造器中
+     * 实例初始化器中的语句以及实例初始化器后的实例变量初始化器 会被编译器移动到不含this语句构造器中
      * 实例初始化器中能够使用this，super访问当前对象
      *
      * 静态初始化器(Static Initializers)

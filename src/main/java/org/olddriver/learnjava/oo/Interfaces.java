@@ -108,5 +108,6 @@ public interface Interfaces{
 	 *
 	 * 函数式接口
 	 * 仅有一个抽象方法的接口，接口中与Object类中对应方法除外
+	 * 函数式接口可以使用@FunctionalInterface标识
 	 */
 }
