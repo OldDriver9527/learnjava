@@ -13,5 +13,4 @@ public class PracticeCase {
             return number * factorial(number - 1);
         }
     }
-
 }
