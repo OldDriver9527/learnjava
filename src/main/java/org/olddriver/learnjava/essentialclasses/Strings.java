@@ -6,8 +6,7 @@ package org.olddriver.learnjava.essentialclasses;
  */
 public class Strings {
     /*
-     * String类表示字符串，String类实例不可变，一旦初始化完毕，不能修改内容
-     * 若希望修改字符串对象内容，只能创建新String对象
+     * String类表示字符串，String类实例不可变，一旦初始化完毕，实例中名为value字符数组指向对象不可变，value数组中的元素可以通过反射修改
      *
      * String类方法
      * charAt(int)  获取指定索引处字符
@@ -53,7 +52,7 @@ public class Strings {
      * matches(String)  判断当前字符串是否匹配正则表达式
      *
      * 字符串生成器(StringBuilder)，字符串缓冲区(StringBuffer)
-     * StringBuilder线程不安全，但单线程情况下效率高于StringBuffer
+     * StringBuffer线程安全，方法使用synchronized修饰；StringBuilder线程不安全，但单线程情况下效率高于StringBuffer
      * StringBuilder，StringBuffer与String类似，同样存储字符序列，但StringBuilder，StringBuffer中字符序列可以修改
      * StringBuilder长度表示存储字符个数，容量表示已分配的字符存储量，容量会在必要时自动扩充
      * 在预知最终字符串长度情况下，可以设置容量，减少StringBuilder扩容次数
@@ -102,7 +101,7 @@ public class Strings {
      *
      * 字符串连接符(+)
      * +对Stirng重载
-     * 在Stirng初始化表达式中，使用字符串连接符连接多个字符串，编译器直接将多个字符串作为一个字符串处理
+     * 在Stirng初始化器中，使用字符串连接符连接多个字符串(无论是字面常量值或是字符串变量)，编译器直接将多个字符串作为一个字符串处理
      * 当String对象初始化完毕，再使用字符串连接符连接字符串，编译器通过隐式声明StringBuilder实现字符串连接，
      * 不建议在循环中使用字符串连接符连接字符串，会导致创建多个StringBuilder中间对象
      *
