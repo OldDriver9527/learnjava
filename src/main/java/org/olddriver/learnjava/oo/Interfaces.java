@@ -80,6 +80,7 @@ public interface Interfaces{
 	 * 为了与普通接口声明区分，注解在interface关键字前添加@
 	 * 注解无继承的接口列表，注解直接父接口为Annotation
 	 * 注解体中方法只能是抽象方法
+	 * 注解修饰符与接口一致，注解隐式abstract声明
 	 * 注解元素声明
 	 * 定义在注解体中的抽象方法称为注解元素，可以定义0个或多个注解元素
 	 * 注解元素不能定义形参，异常列表，不能使用类型变量
@@ -122,6 +123,7 @@ public interface Interfaces{
 	 *          apply方法对输入执行操作，返回结果
 	 *          andThen方法返回合并Function对象，先对输入执行当前对象apply方法，再对返回结果执行参数对象apply方法
 	 *          compose方法返回合并Function对象，先对输入执行参数对象apply方法，再对返回结果执行当前对象apply方法
+	 *          identity方法返回Function对象，对象的apply方法总是返回输入
 	 * Predicate 断言型接口，对输入执行判断，返回booelan类型结果
 	 *           test方法对输入进行判断，返回boolean类型结果
 	 *           and方法返回组合Predicate对象，test方法中对当前对象test方法和参数对象test方法结果进行&&运算
@@ -129,4 +131,7 @@ public interface Interfaces{
 	 *           negate方法返回新Predicate对象，test方法中对当前对象test方法结果进行!运算
 	 *           isEqual静态方法，创建Predicate对象，test方法中将test输入参数与isEqual输入参数进行比较
 	 */
+
+
+
 }

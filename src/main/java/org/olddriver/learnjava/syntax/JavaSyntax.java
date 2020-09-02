@@ -114,8 +114,9 @@ public class JavaSyntax{
 	 * char		占2byte 0~2^16-1，用于表示unicode字符集中的字符，char类型变量存储的是unicode编码值，因此char类型能够与int类型转换
 	 * boolean
 	 * 引用数据类型 Reference Data Types
-	 * 引用数据类型包括，类，接口，数组类型。引用数据类型由用户自定义
+	 * 引用数据类型包括类，接口，数组类型。引用数据类型由用户自定义
 	 * null值可以转换为任意引用类型，赋值给任意引用类型变量
+	 * 引用数据类型变量简称引用，是指向对象的指针，存储对象在heap中地址
 	 * ii.高精度数字
 	 * BigInteger	
 	 * 可以封装超出long类型的整数常量值
@@ -125,7 +126,7 @@ public class JavaSyntax{
 	 * BigInteger，BigDecimal对象不可变，进行运算后会产生新对象
 	 * BigDecimal对象进行除法运算，结果除不尽时必须指定保留小数点位数
 	 * iii.自动类型提升
-	 * 对于boolean以外的七种基本数据类型，参与运算时低等级数据类型会提升为最高等级数据类型，之后再进行运算
+	 * 对于boolean以外的七种基本数据类型，使用运算符进行运算时低等级数据类型会提升为最高等级数据类型，之后再进行运算
 	 * 进行自动类型提升运算包括算数运算，赋值运算，比较运算，三元运算，位运算
 	 * 1若操作数最高级类型为double，将所有操作数都提升为double类型，且结果也为double类型
 	 * 2若操作数最高级类型为float，将所有操作数都提升为float类型，且结果也为float类型
@@ -328,7 +329,7 @@ public class JavaSyntax{
 	 * deepEquals	用于比较多维数组是否相同
 	 * binarySearch		二分查找
 	 * asList	数组转换为列表，该列表不支持增删操作
-	 * fill	使用指定值填充数组
+	 * fill	使用指定元素重写数组中的元素
 	 * copyOf	从起始位置复制数组
 	 * copyOfRange	从指定索引赋值数组
 	 * iiiiiiii.补充
