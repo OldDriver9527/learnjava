@@ -1,6 +1,6 @@
 package org.olddriver.learnjava;
 
-public class PracticeCase {
+public class PracticeCase{
     /**
      * 阶乘
      * @param number

@@ -1,5 +1,9 @@
 package org.olddriver.learnjava.collections;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 20200822
  * part 1
@@ -149,4 +153,21 @@ public class Interfaces {
      * firstKey() 获取映射中最小的key
      * lastKey() 获取映射中最大的key
      */
+
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<String>();
+        Collections.addAll(set,"a","b");
+
+        System.out.println(set.size());
+
+        System.out.println(set.isEmpty());
+
+        System.out.println(set.add("a"));
+
+        System.out.println(set.remove("a"));
+
+
+
+
+    }
 }

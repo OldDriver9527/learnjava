@@ -10,7 +10,7 @@ public class Implementations {
      * 通用实现
      * Set接口具有三个通用实现，HashSet，TreeSet，LinkedHashSet。HashSet为最佳实现
      * HashSet
-     * 默认初始容量为16，负载因子为0.75
+     * 通过HashMap实现
      * HashSet使用hashCode方法，equals方法判断元素是否相等
      * TreeSet
      * TreeSet中元素必须实现Comparable接口或创建TreeSet时传入比较器
@@ -27,7 +27,7 @@ public class Implementations {
      * 通用实现
      * List接口具有两个通用实现，ArrayList 和 LinkedList
      * ArrayList
-     * 线程不安全，效率高，扩容时扩大为原来1.5倍
+     * 线程不安全，效率高，扩容时扩大为原来1.5倍。使用顺序表实现
      * ArrayList中使用元素equals方法判断元素是否相等
      * LinkedList 使用双向链表数据结构实现
      * LinkedList中使用元素equals方法判断元素是否相等
@@ -41,6 +41,12 @@ public class Implementations {
      * Map接口具有三种通用实现，HashMap，TreeMap，LinkedHashMap
      * HashMap
      * 使用key的hashCode，equals方法判断key是否相等
+     * jdk8中HashMap使用数组，链表，红黑树实现，HashMap中Node表示链表结点，TreeNode表示红黑树结点
+     * HashMap构造器没有创建存储结点的数组，当第一次调用put方法添加元素时，对数组进行扩容完成创建数组.
+     * 扩容完毕，计算元素在数组中的存放位置，根据散列码与数组长度求模的结果确定。由于数组长度必须是2的幂次，模运算简化为散列码&(数组长度-1)，
+     * 若该位置无元素，直接创建链表结点存放到数组中
+     * 若该位置存在元素，判断结点配型为链表结点还是红黑树结点，不同类型执行不同操作
+     *
      * 特殊实现
      * EnumMap key可用于存放同一枚举类型的枚举常量，
      * WeakHashMap

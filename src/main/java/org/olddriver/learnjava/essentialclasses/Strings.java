@@ -1,5 +1,7 @@
 package org.olddriver.learnjava.essentialclasses;
 
+import java.util.stream.Stream;
+
 /**
  * 20200510
  * part 1
@@ -111,4 +113,28 @@ public class Strings {
      * %[argument_index$][flags][width][.precision]conversion
      * 日期时间转换符包含两个字符，前缀字符为t或T，后缀字符表示使用日期时间格式
      */
+    public static void main(String[] args) {
+        String str = "hello world";
+        int index = 0;
+        System.out.println("指定索引"+index+"处字符为"+str.charAt(0));
+
+        int from = 2;
+        System.out.println("从"+from+"索引处开始截取，结果为"+str.substring(from));
+
+        int to = 5;
+        System.out.println("从"+from+"索引处开始截取到"+to+"结束，结果为"+str.substring(from,to));
+
+        str = "hello world world world";
+
+        String[] s = str.split(" ",0);
+        Stream<String> stream = Stream.of(s);
+        stream.forEach(System.out::println);
+
+        str = "     hw      ";
+        System.out.println(str.trim());
+
+
+        str = "abcdabcd";
+        System.out.println(str.replace("a","0"));
+    }
 }
