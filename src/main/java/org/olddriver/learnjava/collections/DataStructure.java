@@ -1,11 +1,12 @@
-package org.olddriver.learndatastructure;
+package org.olddriver.learnjava.collections;
 
 /**
  * 20200825
- * part 1
+ * 数据结构 概念
+ * 第二部分
  */
 public class DataStructure {
-    /*
+    /**
      * 数据
      * 能够输入计算机，并能用计算机处理的符号集合，数据可分为数值型数据，非数值型数据
      *

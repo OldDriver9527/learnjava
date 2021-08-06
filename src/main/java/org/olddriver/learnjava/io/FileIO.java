@@ -1,8 +1,5 @@
 package org.olddriver.learnjava.io;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 /**
  * 20200905
  * part 2
@@ -35,19 +32,4 @@ public class FileIO {
      *
      *
      */
-
-    public static void main(String[] args) {
-        Path p1 = Paths.get("/tmp/foo");
-
-        System.out.println(p1.getFileName());
-        System.out.println(p1.getName(0));
-        System.out.println(p1.getNameCount());
-
-        System.out.println(p1.subpath(1,2));
-
-        System.out.println(p1.getParent());
-
-        System.out.println(p1.getRoot());
-    }
-
 }
