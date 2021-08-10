@@ -1,4 +1,5 @@
 package org.olddriver.learnjava.concurrency;
+
 /**
  * 20200907
  * future模式
@@ -20,7 +21,7 @@ public class FuturePattern {
      *                      supplyAsync 构建异步执行阶段
      *                      thenCompose 将前一个阶段结果作为后一个阶段输入进行处理，下一个阶段中再委托其他阶段进行处理。
      *                                  Function接口返回值必须是CompletableFuture，通过CompletableFuture获取处理结果。
-     *                                  两个阶段具有先后顺序
+     *                                  涉及三个阶段
      *
      *                      thenCombine 将两个阶段的结果进行合并处理，处理结果通过CompletableFuture获取。
      *                                  两个阶段不具有先后顺序，可以并发执行

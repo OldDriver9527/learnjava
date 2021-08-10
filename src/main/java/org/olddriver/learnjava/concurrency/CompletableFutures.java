@@ -1,7 +1,9 @@
 package org.olddriver.learnjava.concurrency;
 
-import java.util.ArrayList;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CompletableFutures {
 
@@ -99,26 +101,19 @@ public class CompletableFutures {
             System.out.println(thread.getName()+"---"+thread.getState()+"---"+thread.isDaemon());
         });*/
 
-        ArrayList<CompletableFuture<String>> list = new ArrayList<>();
-        long start = System.nanoTime();
-        for(int i = 0 ; i < 30 ; i++){
-            CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> {
 
-                Thread thread = Thread.currentThread();
-                System.out.println(thread.getName()+"---"+thread.getState()+"---"+thread.isDaemon());
+        int num = 0;
+        char character = 'a';
+        for(int i = 0 ; i < 26 ; i ++){
+            int temp = i;
+            CompletableFuture cf1 =  CompletableFuture.runAsync(() -> {
+                System.out.println(num + temp);
+            },executorService).thenRunAsync(()->{
+                System.out.println((char)(character + temp));
+            },executorService);
 
-                return "hello";
-            });
-            list.add(cf);
+            CompletableFuture.allOf(cf1).join();
         }
-
-        for(int i = 0 ; i < list.size() ;i++){
-            CompletableFuture<String> stringCompletableFuture = list.get(i);
-            stringCompletableFuture.get();
-        }
-        long end = System.nanoTime();
-        System.out.println(end-start);
-
 
         executorService.shutdown();
     }

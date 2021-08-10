@@ -1,5 +1,10 @@
 package org.olddriver.learnjava.jvm;
 
+/**
+ * java虚拟机，字节码文件格式
+ * 20210806
+ * 第一部分
+ */
 public class JVM {
     /**
      * jvm

@@ -30,5 +30,26 @@ public class InterruptThread {
             e.printStackTrace();
         }
 
+
+
+        Runnable r = ()-> {
+            System.out.println(Thread.currentThread().getName()+" hello!!!");
+            Thread.currentThread().interrupt();
+            System.out.println("1"+Thread.currentThread().isInterrupted());
+            System.out.println("2"+Thread.interrupted());
+            System.out.println("3"+Thread.currentThread().isInterrupted());
+        };
+        Thread t1 = new Thread(r);
+        Thread t2 = new Thread(r);
+
+        t1.start();
+        t2.start();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t1.interrupt();
+
     }
 }

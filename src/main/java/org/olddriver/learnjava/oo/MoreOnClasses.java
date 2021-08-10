@@ -23,22 +23,17 @@ public class MoreOnClasses {
      * Lambda参数仅有一个，括号可选
      * Lambda体对应函数式接口中抽象方法实现，Lambda体可以是单个表达式或块
      * Lambda表达式在运行时，会在当前类中添加private static方法，方法体为LambdaBody；并且生成新类，新类中调用新增方法
+     * lambda表达式运行时可能会导致产生大量字节码文件，在循环中小心使用
      *
      * 方法引用(Method References)表达式
      * Lambda Expression简写形式，用于创建函数式接口子类对象
+     * 当lambda体中仅调用方法，且方法参数与lambda参数相关，可以使用方法引用
      * 方法引用分类
-     * i.通过实例引用实例方法 instance::instanceMethod
-     * 若LambdaBody中仅通过实例调用实例方法，LambdaExpression可以简化成 instance::instanceMethod
-     * 实例方法参数列表，返回值类型要与FunctionalInterface中抽象方法参数列表，返回值类型一致
-     * ii.通过类名引用类方法 ClassName::staticMehtod
-     * 若LambdaBody中仅通过类名调用类方法，LambdaExpression可以简化成 ClassName::staticMehtod
-     * 类方法参数列表，返回值类型要与FunctionalInterface中抽象方法参数列表，返回值类型一致
-     * iii.通过类名引用实例方法 ClassName::instanceMethod
-     * 若LambdaBody中仅调用第一个参数的实例方法，其他参数传入实例方法，LambdaExpression可以简化成 ClassName::instanceMethod，类名为第一个参数类名
-     * 实例方法参数列表，返回值类型与FunctionalInterface中抽象方法参数列表，返回值类型对应
-     * iiii.通过类名引用构造器 ClassName::new
-     * 若LambdaBody中仅创建指定类型对象并返回，LambdaExpression可以简化成 ClassName::new
-     * 构造器参数列表要与FunctionalInterface中抽象方法参数列表一致，通过参数列表确定调用构造器
+     * 类型               语法	            对应的Lambda表达式
+     * 静态方法引用	类名::staticMethod	(args) -> 类名.staticMethod(args)
+     * 实例方法引用	inst::instMethod	(args) -> inst.instMethod(args)
+     * 对象方法引用	类名::instMethod	(inst,args) -> 类名.instMethod(args)
+     * 构建器引用	类名::new	        (args) -> new 类名(args)
      *
      * Object类中方法
      * equals	判断当前对象与参数对象是否相同，Object类中eqauls方法使用==运算符进行判断；
