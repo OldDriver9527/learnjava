@@ -1,36 +1,20 @@
 package org.olddriver.learnjava.collections;
 
 /**
+ * 容器
  * 20200822
- * part 1
+ * 第一部分
  */
-public class Interfaces {
-    /*
-     * 集合
-     * 用于存储对象的容器，集合只能存储引用数据类型
-     * 集合长度可变
-     * 集合是java自定义的数据结构，使用现有数据结构实现
+public class Container {
+    /**
+     * 容器
+     * 用于存储对象引用(容器只能存储引用数据类型)
+     * 容器分为两大分支，
+     * 一个分支继承Collection，引用指向实际对象；
+     * 一个分支继承Map，其中存储的引用指向Entry对象，Entry对象中包含key value引用，分别指向键值对对象
      *
-     * 集合核心接口
-     * Collection接口 集合框架顶层接口，定义集合基本操作
-     * size()   返回集合中元素个数
-     * isEmpty()    判断集合是否为空
-     * contains(Object o)   判断集合中是否包含与指定元素相等的元素，集合实现不同判断相等条件可能不同
-     * add(E e) 向集合中添加指定元素，集合实现不同添加位置可能不同
-     * remove(Object o) 移除集合中与指定元素相等的元素，集合实现不同判断相等条件可能不同
-     * iterator()   获取在集合元素上迭代的迭代器
-     * containsAll(Collection<?> c) 判断集合中是否包含所有与指定集合中元素相等的元素，集合实现不同判断相等条件可能不同
-     * addAll(Collection<? extends E> c) 向集合中添加指定集合中的所有元素，集合实现不同添加位置可能不同
-     * removeAll(Collection<?> c) 移除全部与指定集合中元素相等的元素，集合实现不同判断相等条件可能不同
-     * retainAll(Collection<?> c) 保留两个集合中共有元素，移除非共有元素，集合实现不同判断相等条件可能不同
-     * toArray() 将集合中元素转型为Object类型，添加进数组并返回
-     * toArray(T[] a)   将集合中元素类型转型为指定类型T，添加进指定数组a中
-     * clear() 清空集合，删除集合中所有元素
-     *
-     * 遍历集合方式
-     * i.jdk8以后，推荐使用聚合操作遍历集合
-     * ii.使用forEach语句遍历集合
-     * iii.使用迭代器遍历集合
+     * Vector，HashTable
+     * 1.0版本容器，使用synchronized保证同步
      *
      * Set接口 表示不允许重复元素的集合，元素无序
      * Set接口中未添加特有方法，仅继承Collection接口中方法

@@ -1,8 +1,6 @@
 package org.olddriver.learnjava.concurrency;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 20210809
@@ -48,21 +46,34 @@ public class Synchronized {
      * aba问题要通过比较版本号解决
      */
 
-    static AtomicInteger integer = new AtomicInteger(0);
+    public static void main(String[] args) {
 
-    public static void main(String[] args) throws InterruptedException {
-        CompletableFuture.runAsync(()->{
-            for(int i = 0 ; i < 100000 ; i++){
-                integer.incrementAndGet();
-            }
-        }).runAfterBoth(CompletableFuture.runAsync(()->{
-            for(int i = 0 ; i < 100000 ; i++){
-                integer.incrementAndGet();
-            }
-        }),()->{
-            System.out.println(integer.get());
-        });
+        Runnable r = Synchronized::test;
 
-        TimeUnit.SECONDS.sleep(1);
+        Thread t1 = new Thread(r,"t1");
+        Thread t2 = new Thread(r,"t2");
+
+        t1.start();
+        t2.start();
+
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        t2.interrupt();
+        System.out.println(t2.getState());
+    }
+
+
+    public static synchronized void test(){
+        System.out.println(Thread.currentThread().getName()+" hello");
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
