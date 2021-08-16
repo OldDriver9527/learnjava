@@ -30,47 +30,18 @@ public class Barrier {
      * Exchanger
      * 交换器，实现两个线程间数据交换。可重复使用
      * 线程执行exchange方法等待与其他线程交换数据，数据交换完毕线程恢复执行
+     * 适合两个线程交替执行
      */
 
     static CountDownLatch latch = new CountDownLatch(10);
 
-    static CyclicBarrier barrier = new CyclicBarrier(2, () -> System.out.println("hello"));
+    static CyclicBarrier barrier = new CyclicBarrier(2);
 
     static Phaser phaser = new Phaser(5);
 
     static Exchanger<String> exchanger = new Exchanger<>();
 
     public static void main(String[] args)  {
-
-
-        Runnable r1 = () ->{
-            for(int i = 0 ; i < 26 ; i++){
-                System.out.println(i);
-                try {
-                    barrier.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (BrokenBarrierException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        Runnable r2 = () ->{
-            for(int i = 0 ; i < 26 ; i++){
-                System.out.println((char)(i+65));
-                try {
-                    barrier.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (BrokenBarrierException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        new Thread(r1).start();
-        new Thread(r2).start();
 
 
         /*Runnable r = ()->{

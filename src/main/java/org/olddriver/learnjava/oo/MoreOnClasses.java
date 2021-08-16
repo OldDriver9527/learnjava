@@ -27,7 +27,7 @@ public class MoreOnClasses {
      *
      * 方法引用(Method References)表达式
      * Lambda Expression简写形式，用于创建函数式接口子类对象
-     * 当lambda体中仅调用方法，且方法参数与lambda参数相关，可以使用方法引用
+     * 当lambda体中仅调用方法，且方法参数与lambda参数相关，可以使用方法引用。方法返回值会作为lambda体返回值
      * 方法引用分类
      * 类型               语法	            对应的Lambda表达式
      * 静态方法引用	类名::staticMethod	(args) -> 类名.staticMethod(args)

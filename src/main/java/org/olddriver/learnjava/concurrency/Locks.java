@@ -41,8 +41,11 @@ public class Locks {
      *
      * LockSupport
      * 用于阻塞唤醒线程，可实现唤醒指定线程
-     * 线程执行LockSupport的park方法进入等待状态
+     * 线程执行LockSupport的park方法进入等待状态，不会导致线程释放锁
      * 当其他线程执行LockSupport的unpark方法唤醒指定线程，unpark方法可在park方法之前调用
+     *
+     * 锁的等待唤醒
+     * 锁的wait方法，Condition的await方法会导致线程释放锁
      */
 
     static Lock lock = new ReentrantLock();
