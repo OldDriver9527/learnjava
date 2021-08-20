@@ -8,7 +8,7 @@ public class SpringCloud {
     /**
      * springcloud中controller和service通过rest调用
      *
-     * 相关组件
+     * 服务治理组件
      * 网关
      * 业务网关。用户请求最先到达网关，网关实现负载均衡，权限控制
      * 返回用户的数据都会经过网关，存在瓶颈
@@ -38,6 +38,6 @@ public class SpringCloud {
      *
      * 监控中心
      *
-     * 监控探针组件
+     * 监控端点组件
      */
 }
