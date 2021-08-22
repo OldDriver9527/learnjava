@@ -29,5 +29,18 @@ public class OpenFeign {
      *
      * 切换feignclient实现
      * 将feignclient默认实现替换为apache实现，会根据Mapping注解决定请求方法，根据参数注解封装参数，两者互不影响
+     *
+     * 重试机制
+     * 超时后进行重试，超时分为连接超时，业务逻辑超时
+     * feign默认关闭自己的重试机制，使用ribbon的重试机制
+     * ribbon.ConnectTimeout    指定连接超时时间
+     * ribbon.ReadTimeout   指定业务逻辑超时时间
+     * ribbon.MaxAutoRetries    同一服务上最大重试次数，不包括首次调用
+     * ribbon.MaxAutoRetriesNextServer  切换实例次数
+     * ribbon.OkToRetryOnAllOperations  是否所有请求方法均重试，false时仅对get方法重试
+     * 当首次请求发生超时，会在当前服务上尝试MaxAutoRetries次，若均超时会切换MaxAutoRetriesNextServer次服务，每个实例上尝试
+     * MaxAutoRetries+1次
+     *
+     * 日志
      */
 }

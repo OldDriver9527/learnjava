@@ -6,7 +6,7 @@ package org.olddriver.learnspringcloud;
  */
 public class SpringCloud {
     /**
-     * springcloud中controller和service通过rest调用
+     * springcloud中controller(consumer)和service(provider)通过rest调用
      *
      * 服务治理组件
      * 网关
