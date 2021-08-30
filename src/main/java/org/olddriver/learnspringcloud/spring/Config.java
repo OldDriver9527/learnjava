@@ -14,13 +14,15 @@ public class Config {
      *
      * 单节点搭建方式
      * 服务端搭建
-     * i.添加相关依赖
+     * i.添加config服务端相关依赖
      * ii.启动类上添加@EnableConfigServer，激活Config配置
      * iii.修改配置文件
      * spring.cloud.config.server.git.uri   指定配置文件仓库地址
+     * spring.cloud.config.server.git.username  指定用户名
+     * spring.cloud.config.server.git.password  指定密码
      * spring.cloud.config.label    指定配置文件仓库分支
      * 客户端搭建
-     * i.添加相关依赖
+     * i.添加config客户端相关依赖
      * ii.修改配置文件
      * 配置文件名称修改为bootstrap
      * spring.cloud.config.uri  指定config服务端url
@@ -40,7 +42,7 @@ public class Config {
      * ii.在注入动态配置的类上添加@RefreshScope注解
      * iii.向客户端发出/actuator/refresh post请求，更新配置。每个客户端都需要执行一次
      *
-     * 通过消息总线自动更新其他服务配置
+     * 通过消息总线自动更新其他服务配置????
      * i.添加消息总线依赖
      * ii.添加消息总线配置
      * spring.rabbitmq.host mq主机名
