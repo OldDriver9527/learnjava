@@ -10,8 +10,11 @@ public class SessionManagement {
      * Session Management
      * 一个用户与web服务器之间发生一系列请求和响应的过程称为会话。web服务器能够把属于同一会话的请求和响应过程关联起来，
      * 使得他们之间可以相互依赖和传递信息。
-     * web应用低并发时可使用session，cookie技术维持会话，高并发时使用jwt维持会话
-     * 移动端应用天生无cookie，需要使用jwt维持会话
+     * 会话分为有状态会话，无状态会话
+     * 有状态会话使用session存储数据；无状态会话不再使用session
+     * 传统单体web应用使用有状态会话
+     * 分布式web应用可使用有状态会话，但需要考虑session共享或session集中存储；建议使用无状态会话
+     * 移动端应用天生无cookie，需要使用无状态会话
      * cookies
      * 用户访问服务器某个资源时，web服务器在HTTP响应头中附带传给浏览器的一些数据，浏览器会把Cookie保存起来。
      * 当用户再次请求同一站点的资源，浏览器连同Cookie一同提交给服务器
@@ -36,9 +39,11 @@ public class SessionManagement {
      * 跨站请求伪造
      * 用户登录信任站点后打开一个新标签页访问恶意站点，恶意站点页面中访问信任站点资源
      * i.在用户不知情情况下，恶意利用form元素的action属性进行跨域访问
+     * 防御csrf攻击
+     * i.全站post请求，重要操作前校验是否用户自愿操作
+     * ii.服务端下发token，客户端所有请求中携带token(较少使用)
      *
      * Shiro，SpringSecurity核心功能
      * 认证，授权
-     * 防御csrf攻击
      */
 }
