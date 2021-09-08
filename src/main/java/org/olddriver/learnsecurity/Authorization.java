@@ -8,14 +8,15 @@ package org.olddriver.learnsecurity;
 public class Authorization {
     /**
      * 授权   基于url进行鉴权，判断当前用户是否具有权限访问资源
-     * i.单体应用采用有状态会话授权方式
-     * 配置url权限
-     * a.重写WebSecurityConfigurerAdapter中configure方法，通过HttpSecurity对象进行配置
-     * authorizeRequests方法用于配置url权限，鉴权时按照声明顺序从上往下进行匹配
+     *
+     * 单体应用采用有状态会话的授权方式
+     * i.配置url权限
+     * a.重写配置类中configure方法，通过HttpSecurity对象配置过滤器链
+     * authorizeRequests方法用于配置过滤器链拦截所有请求？？？
      * antMatchers方法配置需授权的ant模式url，ant模式中 ?表示任意单个字符，*表示0个或多个字符，**表示0个或多个目录
      * hasRole方法配置有权限的角色名称
      * b.通过注解配置资源权限
-     * security配置类上添加@EnableGlobalMethodSecurity，通过@EnableGlobalMethodSecurity选择配置权限的方式
+     * 配置类上添加@EnableGlobalMethodSecurity，通过@EnableGlobalMethodSecurity选择配置权限的方式
      * securedEnabled方法返回值设置为true，使用@Secured安全注解配置权限，仅能接收角色名
      * prePostEnabled方法返回值设置为true，使用@PreAuthorize前置注解配置权限，可以接收表达式
      * 最长匹配原则？？？

@@ -45,5 +45,6 @@ public class SessionManagement {
      *
      * Shiro，SpringSecurity核心功能
      * 认证，授权
+     * 通过过滤器链决定用户每次请求获得怎样的响应
      */
 }
