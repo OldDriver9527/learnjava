@@ -1,5 +1,10 @@
 package org.olddriver.learnnetwork;
 
+/**
+ * 20210709
+ * 应用层
+ * 第二部分
+ */
 public class ApplicationLayer {
     /**
      * 网络应用体系结构
