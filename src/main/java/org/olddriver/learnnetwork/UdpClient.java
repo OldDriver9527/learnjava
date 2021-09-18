@@ -7,7 +7,7 @@ import java.net.InetAddress;
 
 public class UdpClient {
     public static void main(String[] args) throws IOException {
-        byte[] bytes = "hello server".getBytes();
+        byte[] bytes = "hello".getBytes();
         InetAddress address = InetAddress.getByName("localhost");
         DatagramPacket packet = new DatagramPacket(bytes,bytes.length,address,6666);
 
