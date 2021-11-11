@@ -7,16 +7,16 @@ package org.olddriver.learnjava.jvm;
  */
 public class ObjectModel {
     /**
-     * hotspot对象模型，64位
+     * 64位hotspot对象模型
      * 普通对象由四部分组成
      * 对象头  markword，占8byte
-     * ClassPointer 执行Class对象指针，开启UseCompressedClassPointers选项占4byte，否则占8byte
-     * 实例数据 开启UseCompressedOops选项，普通对象指针占4byte，否则占8byte
+     * ClassPointer 指向Class对象指针，开启UseCompressedClassPointers选项占4byte，否则占8byte
+     * 实例数据 即实例变量。对于引用数据类型，若开启UseCompressedOops选项，普通对象指针占4byte，否则占8byte
      * padding  确保对象大小为8倍数
      *
      * 数组对象由五部分组成
      * 对象头  markword，占8byte
-     * ClassPointer 执行Class对象指针，开启UseCompressedClassPointers选项占4byte，否则占8byte
+     * ClassPointer 指向Class对象指针，开启UseCompressedClassPointers选项占4byte，否则占8byte
      * 数组长度，占4byte
      * 数组数据
      * padding  确保对象大小为8倍数

@@ -7,16 +7,18 @@ package org.olddriver.learnjava.syntax;
  */
 public class JavaSyntax {
     /**
-     * unicode字符集
-     * 收录世界各个国家的字符，为每个字符规定一个编号(unicode编码)。
-     * 计算机中并不直接存储unicode编码，使用utf-8，utf-16，utf-32等编码规则，将unicode转换为字节序列进行存储
-     * java使用unicode字符集，utf-16编码。char存储utf-16的代码单元
+     * unicode标准
+     * 包含字符集和编码规则
+     * 字符集中收录世界各个国家的字符，每个字符对应一个码点。
+     * 早期使用ucs-2字符集(码点占2字节)，后期由于字符数量增加使用ucs-4字符集(码点占4字节)
+     * 计算机中并不直接存储码点，使用utf-8，utf-16，utf-32等编码规则将码点转换为字节序列进行存储
+     * java使用unicode标准，文本使用utf-16编码规则。char存储utf-16的代码单元
      *
      * 关键字 keyword
      * 程序中被赋予特殊含义的单词，关键字都小写。java中保留50个关键字
      *
      * 标识符 identifier
-     * 没有长度限制的名称，包名，类名，方法名，字段名都属于标识符
+     * 没有长度限制的名称，包名，类名，方法名，字段名，常量名 都属于标识符
      * i.标识符命名规则
      * 标识符由数字，字母，下划线，美元符号构成
      * 标识符不能以数字开头
@@ -82,7 +84,7 @@ public class JavaSyntax {
      *
      * 隐式类型转换
      * 对于boolean以外的七种基本数据类型，允许取值范围小的类型隐式转换为取值范围大的类型，
-     * 整型常量赋值时允许大范围数据类型隐式转换为小范围数据类型，其余情况均不允许大范围类型转为小范围类型
+     * int常量赋值时允许大范围数据类型隐式转换为小范围数据类型，其余情况均不允许大范围类型转为小范围类型
      * 复合赋值运算发生隐式类型转换
      * 进行算数运算、比较运算、三元运算、位运算
      * i.若操作数中最大范围类型为double，将所有操作数都提升为double类型，且结果也为double类型
@@ -176,8 +178,8 @@ public class JavaSyntax {
      * 有包装类类型参与的运算可能会抛出NullPointerException(自动拆箱)和内存溢出(自动装箱)
      * java保证运算符的操作数从左向右依次计算，操作数计算在操作之前完成
      * 赋值运算符 Assignment Operator
-     * i.整数常量值赋值给byte，short，char类型变量，可能发生隐式类型转换
-     * ii.复合赋值运算符一定进行隐式类型转换
+     * i.int常量值赋值给byte，short，char类型变量，可能发生隐式类型转换
+     * ii.复合赋值运算符一定进行隐式类型转换，不能在声明语句中使用
      * 算数运算符 Arithmetic Operator
      * + - * / % ++ --
      * 相同类型操作数才能进行运算，结果仍是操作数类型
@@ -194,7 +196,7 @@ public class JavaSyntax {
      * > >= < <=	适用于boolean以外的七种基本数据类型及包装类类型
      * == !=	适用于基本数据类型及引用数据类型
      * 逻辑运算符
-     * &&	||	！ ^
+     * &&	||	！ ^ & |
      * 逻辑运算符用于连接boolean表达式
      * i.&&有假即假，同真为真；当左侧表达式为false，右侧表达式不参与运算
      * true && true	true
@@ -214,7 +216,7 @@ public class JavaSyntax {
      * 当boolean-expression为false，整个表达式取value1
      * instanceof
      * 用于判断对象是否是某个类的实例，null值不是任意类的实例
-     * 位运算符(适用于整数字面值或boolean字面值)
+     * 位运算符(适用于整数字面值)
      * &    |   ^   ~
      * <<	>>	>>>
      * i.&
@@ -239,7 +241,7 @@ public class JavaSyntax {
      * if(boolean-expression){
      * 		statement;
      * }
-     * booealn-expression为true执行{}内语句，为false不执行{}内语句
+     * boolean-expression为true执行{}内语句，为false不执行{}内语句
      * if(boolean-expression){
      * 		statement;
      * }else{
@@ -315,7 +317,7 @@ public class JavaSyntax {
      * 存储同一类型数据的容器，使用一组连续存储单元存放数据。通过索引可以随机访问数组中任意元素
      * 数组是一个对象，通过数组可以调用Object类中所有方法，也可以将数组地址赋值给Object类型引用
      * i.数组类型
-     * 若数组中元素类型为T，数组类型为T[]，中括号个数表示数组维度
+     * 若源数组中元素类型为T，数组类型为T[]，中括号个数表示数组维度
      * 数组长度不是数组类型的一部分
      * ii.数组类型变量
      * 声明数组类型变量并不会创建数组对象，声明格式：

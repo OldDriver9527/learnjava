@@ -5,7 +5,7 @@ package org.olddriver.learnjava.jvm;
  * 20210806
  * 第一部分
  */
-public class JVM {
+public class JVM implements InterfaceTable{
     /**
      * jvm
      * 一套抽象规范，存在多种实现。hotspot为oracle实现。
@@ -35,19 +35,29 @@ public class JVM {
      * 接口计数器 interfaces_count
      * 当前类型实现接口个数，占2byte
      * 接口表
-     * 域计数器 fields_count
+     * 表中元素结构固定，每个元素占2byte，存储接口名称索引
+     * 字段计数器 fields_count
      * 当前类型中包含的域个数，占2byte
-     * 域表
+     * 字段表
+     * 字段表中元素结构固定
+     * 2byte访问标识，2byte名称索引，2byte描述符索引，2byte属性计数器，属性表
      * 方法计数器 methods_count
      * 当前类型中包含的方法个数，占2byte
      * 方法表
+     * 方法表中元素结构固定
+     * 2byte访问标识，2byte名称索引，2byte描述符索引，2属性计数器，属性表
      * 存储方法信息，方法语句对应jvm指令存储在属性表中
      * 属性计数器 attributes_count
      * 当前类型属性表中元素个数，占2byte
      * 属性表
+     * 属性表中元素有多种类型，code类型属性结构与其他属性不同
+     * code类型属性
+     * 2byte名称索引，4byte属性长度，2byte最大栈深度，2byte局部变量表长度，4byte指令长度，具体指令，2byte异常表长度，异常表，2byte属性计数器，属性表
+     * 其他类型属性
+     * 2byte名称索引，4byte属性长度，具体属性
      *
      * 常量池元素标志
-     * 10   方法应用信息 methodref_info
+     * 10   方法引用信息 methodref_info
      * 7    类信息 class_info
      * 1    字符串 utf8_info，字符串<init>表示构造器名称
      *
@@ -76,8 +86,11 @@ public class JVM {
      * 执行类中类变量初始化器，静态初始化器为类变量初始化
      *
      * bytecode解释器，jit
-     * jvm执行引擎中包含解释器和即时编译器，解释器将字节码解释为机器码，效率较低。当一段代码执行频率很高，jvm会将其使用jit编译为
-     * 机器码提高运行速度
+     * jvm执行引擎中包含解释器和即时编译器
+     * 每次执行字节码时，都需要解释器将字节码解释为机器码，效率较低但由于不需要编译过程程序可以快速启动。
+     * 运行过程中当一段字节码执行频率很高，jvm会将其使用jit编译为平台相关机器码，之后可以跳过解释步骤直接执行
      * 可通过jvm参数控制运行模式，混合模式，解释模式，编译模式
      */
+
+    private int num = 1;
 }

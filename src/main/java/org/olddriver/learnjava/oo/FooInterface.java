@@ -1,6 +1,7 @@
 package org.olddriver.learnjava.oo;
 
-public  interface FooInterface {
+
+public interface FooInterface {
     String name = "FooInterface";
 
 }

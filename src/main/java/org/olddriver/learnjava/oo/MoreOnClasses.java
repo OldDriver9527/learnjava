@@ -23,11 +23,11 @@ public class MoreOnClasses {
      * Lambda参数仅有一个，括号可选
      * Lambda体对应函数式接口中抽象方法实现，Lambda体可以是单个表达式或块
      * Lambda表达式在运行时，会在当前类中添加private static方法，方法体为LambdaBody；并且生成新类，新类中调用新增方法
-     * lambda表达式运行时可能会导致产生大量字节码文件，在循环中小心使用
+     * Lambda表达式运行时可能会导致产生大量字节码文件，在循环中小心使用
      *
      * 方法引用(Method References)表达式
      * Lambda Expression简写形式，用于创建函数式接口子类对象
-     * 当lambda体中仅调用方法，且方法参数与lambda参数相关，可以使用方法引用。方法返回值会作为lambda体返回值
+     * 当Lambda体中仅调用方法，且方法参数与Lambda参数相关，可以使用方法引用。方法返回值会作为Lambda体返回值
      * 方法引用分类
      * 类型               语法	            对应的Lambda表达式
      * 静态方法引用	类名::staticMethod	(args) -> 类名.staticMethod(args)

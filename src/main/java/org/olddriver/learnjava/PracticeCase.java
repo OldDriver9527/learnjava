@@ -1,6 +1,8 @@
 package org.olddriver.learnjava;
 
-public class PracticeCase{
+import org.olddriver.learnjava.oo.Foo;
+
+public class PracticeCase extends Foo {
     /**
      * 阶乘
      * @param number
@@ -12,5 +14,12 @@ public class PracticeCase{
         }else{
             return number * factorial(number - 1);
         }
+    }
+
+
+    public static void main(String[] args) {
+        PracticeCase sub = new PracticeCase();
+        sub.test();
+
     }
 }

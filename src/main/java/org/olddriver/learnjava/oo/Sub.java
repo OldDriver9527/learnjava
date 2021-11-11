@@ -1,21 +1,13 @@
 package org.olddriver.learnjava.oo;
 
-public class Sub extends Foo  {
+public class Sub extends NestedClass.Inner {
     private String name = "Sub";
 
-    public Sub() {
-    }
-
-    public Sub(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        System.out.println(name);
-        return name;
+    public Sub(NestedClass o) {
+        o.super();
     }
 
     public static void main(String[] args) {
-        new Sub();
+        NestedClass.Inner i = new NestedClass().new Inner();
     }
 }

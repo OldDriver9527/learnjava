@@ -1,5 +1,10 @@
 package org.olddriver.learnjava.exception;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * 20200520
  * 异常
@@ -8,9 +13,10 @@ package org.olddriver.learnjava.exception;
 public class Exceptions{
     /**
      * 异常
-     * 一系列对象，程序运行中遇到违反java语法约束情况，jvm将创建异常对象
+     * 程序运行中遇到违反java语法约束情况，jvm将创建异常对象。
+     * 线程从异常发生的位置转移到能够处理异常的catch子句中，若不存在程序退出
      *
-     * 异常类层次结构
+     * 异常层次结构
      * Throwable是所有异常类的父类
      * Exception和Error是Throwable子类
      * Exception是普通程序希望恢复异常的父类
@@ -77,4 +83,18 @@ public class Exceptions{
      * 栈轨迹
      * 从方法调用处到异常发生位置的方法调用序列
      */
+
+    public static void main(String[] args) {
+        try(FileInputStream inputStream = new FileInputStream(new File(""))){
+
+            if(true){
+                throw new RuntimeException("");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,12 +1,17 @@
 package org.olddriver.learnjava.generics;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 20200808
+ * 泛型
  */
 public class Generics<T> {
-    /*
-     * 泛型(Generic Type)
-     * 具有形式类型参数列表的类或接口称为泛型，形式类型参数列表使用<>定义，其中定义类型变量
+    /**
+     * 泛型类型(Generic Type)   类型或方法声明中包含若干类型变量
+     * 将类型或方法声明中不确定的类型使用类型变量表示，类型变量通过声明形式类型参数(formal type parameter)引入
+     * 调用时使用实际类型参数(actual type argument)替换形式类型参数。
      *
      * 实例化泛型
      * 创建泛型实例时，需执行泛型调用，即用实际类型参数列表替换形式类型参数列表。
@@ -32,4 +37,9 @@ public class Generics<T> {
      * 泛型擦除
      * 将泛型类，泛型接口，泛型方法中类型变量替换为第一边界，若未指定边界替换为Object
      */
+
+    public static void main(String[] args) {
+        Map<String,String> map = new HashMap<String,String>();
+
+    }
 }
