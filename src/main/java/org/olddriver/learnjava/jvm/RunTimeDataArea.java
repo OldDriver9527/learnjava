@@ -24,13 +24,14 @@ public class RunTimeDataArea {
 	 *
 	 * method area
      * 存储字节码文件中的字节流。
-     * jdk1.8版本前，方法区通过perm space(永久区)实现，需在启动时指定
-     * jdk1.8之后，方法区通过meta space(元数据区)实现，
+     * jdk1.8版本前，方法区通过perm space(永久代，位于heap中)实现，需在启动时指定
+     * jdk1.8之后，方法区通过meta space(元数据区，存在于本地内存Native memory)实现，
      * 运行时常量池(runtime constant pool)位于方法区中，存储字节码文件中常量池表
 	 * jdk1.8之前方法区不会被垃圾回收
      * 字符串常量池不是运行时常量池，jdk1.8之后字符串常量池位于堆中
-     *
+	 *
      * direct memory
      * jdk1.4后增加直接内存，与nio相关
+	 * 并不属于运行时数据区的一部分
 	 */
 }

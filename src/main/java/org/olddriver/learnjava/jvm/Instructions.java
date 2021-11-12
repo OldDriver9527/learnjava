@@ -20,4 +20,12 @@ public class Instructions {
      * invokespecial    调用可直接定位，不存在多态情况的方法。如private方法，构造器
      * invokedynamic    与lambda相关
      */
+
+    public void testAssign() {
+        int i = 100;
+    }
+
+    public void testNew(){
+        new Object();
+    }
 }
