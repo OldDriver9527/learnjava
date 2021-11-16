@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Exceptions{
     /**
      * 异常
-     * 程序运行中遇到违反java语法约束情况，jvm将创建异常对象。
+     * 某种事件，可以改变cpu执行的指令顺序。当程序运行中遇到违反java语法约束情况会发生异常，jvm将创建异常对象。
      * 线程从异常发生的位置转移到能够处理异常的catch子句中，若不存在程序退出
      *
      * 异常层次结构

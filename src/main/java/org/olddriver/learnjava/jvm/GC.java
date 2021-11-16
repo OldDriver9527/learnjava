@@ -1,5 +1,9 @@
 package org.olddriver.learnjava.jvm;
 
+import java.lang.ref.WeakReference;
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * gc
  * 20210808
@@ -70,4 +74,20 @@ public class GC {
      * -XX:+UseParallelGC   使用ps和po
      * -XX:+UseG1GC 使用g1
      */
+
+    public static void main(String[] args) {
+
+
+        Deque<WeakReference<Garbage>> deque = new LinkedList<>();
+
+        WeakReference reference = new WeakReference(new Garbage());
+        deque.addFirst(reference);
+
+        System.out.println(deque.peekLast().get());
+        System.gc();
+        System.out.println(deque.peekLast().get());
+
+    }
+
+
 }

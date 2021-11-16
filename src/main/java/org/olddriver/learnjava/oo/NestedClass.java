@@ -23,6 +23,7 @@ public class NestedClass {
      * 匿名类声明和实例化同时进行。匿名类是指定类或接口的子类
      *
      * 内部类中不能声明static成员，除非将内部类转换成static嵌套类
+     * 在局部类或匿名类中使用局部变量，局部变量应使用final修饰
      */
 
     static class StaticInner{

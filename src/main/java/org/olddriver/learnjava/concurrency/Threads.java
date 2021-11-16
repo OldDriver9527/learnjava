@@ -1,7 +1,10 @@
 package org.olddriver.learnjava.concurrency;
 
+import org.junit.Test;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -13,18 +16,19 @@ public class Threads {
     /**
      * 进程和线程
      * 进程
-     * 一个运行的应用程序就是一个进程，一个进程中至少包含一个线程。每个进程都有独立运行环境和资源，
+     * 一种抽象模型，便于os管理一个正在运行的应用程序。一个进程中至少包含一个线程。每个进程都有独立运行环境和资源，
      * 大多数JVM都是单进程
      * 线程
-     * 进程中的独立运行单元，cpu的调度单位。线程共享进程资源。
+     * 一种抽象模型，实现一个程序可以并发运行多个功能。cpu的调度单位。线程共享进程资源。
      * 一个线程可以执行一个独立任务，实际情况是cpu切换执行线程任务，但理解为线程执行各自任务更简单
+     * java中线程为用户级线程
      *
      * 并发
      * 多个线程在逻辑上同时运行称为并发。程序只需关心并发，不需关心能否并行
      *
      * 使用线程方式
      * i.继承Thread类，重写run方法，之后创建子类对象，通过线程对象start方法启动线程。
-     * 启动一个新线程时，Java虚拟机都会为它分配一个Java栈
+     * 启动一个新线程时，Java虚拟机都会为它分配一个jvm栈
      * ii.创建线程任务对象，将线程任务对象传递给线程，开启线程。线程可以接收Runnable，FutureTask任务。
      * iii.创建线程任务对象，将线程任务对象传递给线程池。线程池可以接收Runnable，Callable，FutureTask任务。
      *
@@ -69,10 +73,10 @@ public class Threads {
      * TimeUnit枚举可选择暂停时间的单位
      *
      * Joins
-     * 在当前线程前插入另一个线程，使当前线程暂停执行，直至另一个线程执行完毕后，当前线程恢复可运行状态。
+     * 在等待线程前插入指定线程，使等待线程暂停执行，直至指定线程执行完毕后，当等待程恢复可运行状态。
      * 可用于等待指定线程结束
      * join方法大多数情况不会导致线程释放锁。
-     * 在某些情况下可以导致线程释放锁资源，当前线程以等待线程作为锁，等待的线程又以自身作为锁，这种情况当前线程执行join方法释放锁
+     * 在某些情况下可以导致线程释放锁资源，以指定线程作为锁，这种情况等待线程执行指定线程的join方法释放锁
      *
      * Yield
      * 使当前线程释放cpu资源，重新竞争cpu资源。yeild方法不会使线程释放锁
@@ -85,11 +89,33 @@ public class Threads {
      * 通过中断可以取消线程任务
      */
 
-    public static void main(String[] args) {
+
+    @Test
+    public void testLockSupport(){
+        Thread main = Thread.currentThread();
+        Thread thread = new Thread("thread"){
+            @Override
+            public void run() {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName()+" execute unpark ");
+                LockSupport.unpark(main);
+            }
+        };
+
+        thread.start();
+        LockSupport.park();
+        System.out.println(main.getName()+" end ");
+
 
     }
 
-    public static void testReentrantLock(){
+
+    @Test
+    public void testReentrantLock(){
         Threads t = new Threads();
         Runnable runnable = t::reentrantLock;
 
@@ -115,6 +141,7 @@ public class Threads {
     }
 
     private ReentrantLock lock = new ReentrantLock();
+    @Test
     public void reentrantLock(){
 
         lock.lock();

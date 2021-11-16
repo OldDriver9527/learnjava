@@ -17,20 +17,6 @@ public class ThreadLocals {
      * 若在线程执行过程中，没有强引用指向ThreadLocal，ThreadLocal可能被回收。但ThreadLocalMap中的Entry存在强引用指向具体值，导致具体值不会被回收
      * 若线程迟迟不结束任务，会导致内存泄漏。
      * 在ThreadLocal使用完毕后应调用remove方法移除ThreadLocalMap中内容
-     *
-     * 强软弱虚
-     * 强引用 普通引用
-     * 若对象被强引用指向，不会被垃圾回收器清除
-     * 软引用(soft reference)
-     * 若对象被软引用指向，内存不够时对象会被垃圾回收器清除
-     * 弱引用(weak reference)
-     * 若对象被弱引用指向，只要发生垃圾回收，对象就会被清除
-     * WeakHashMap  Entry中key属于弱引用，当key指向的对象被回收，整个键值对会被删除
-     * ThreadLocalMap
-     * 虚引用(phantom reference)
-     * 虚引用指向的对象被垃圾回收器清除，被回收的对象会被添加到指定队列中
-     * 无法通过虚引用获取指向的对象
-     * 常用于管理直接内存(堆外内存)
      */
 
     static ThreadLocal<Integer> age = new ThreadLocal<>();
