@@ -38,19 +38,5 @@ public class ELKB {
      * 修改Gruntfile.js文件
      * 在elasticsearch-head目录下执行cnpm install(npm install过慢)
      * npm run start
-     *
-     * 基本概念
-     * 索引   index   类比于关系型数据库中数据库
-     * 类型   type    类比于关系型数据库中表，存储在index中
-     * 文档   document    类比于关系型数据库中行，同一type下的document具有相同字段。es中的最小数据单元
-     * 字段   field   类比于关系型数据库中字段，存储在document中
-     * 分片   shard   es将一个index划分为多个shard
-     *               shard分为primary shard(主分片)，replica shard(副本分片)
-     *               replica shard是primary shard的副本，primary shard可以进行读写操作，replica shard只能进行读操作
-     *
-     * elasticsearch-head中集群健康值
-     * green    集群健康，表示所有primary shard，replica shard均可用
-     * yellow   所有primary shard可用，至少一个replica shard不可用
-     * red      至少一个primary shard不可用
      */
 }

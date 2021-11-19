@@ -2,6 +2,8 @@ package org.olddriver.learnjava;
 
 import org.olddriver.learnjava.oo.Foo;
 
+import java.util.stream.Stream;
+
 public class PracticeCase extends Foo {
     /**
      * 阶乘
@@ -21,5 +23,7 @@ public class PracticeCase extends Foo {
         PracticeCase sub = new PracticeCase();
         sub.test();
 
+        int[] arr = {1};
+        Stream<int[]> arr1 = Stream.of(arr);
     }
 }
