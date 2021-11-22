@@ -1,5 +1,8 @@
 package org.olddriver.learnjava.concurrency;
 
+import org.junit.Test;
+
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -8,8 +11,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * 20210810
  * 锁
+ * 20210810
  * 第五部分
  */
 public class Locks {
@@ -59,8 +62,46 @@ public class Locks {
 
     static StampedLock stampedLock = new StampedLock();
 
-    public static void main(String[] args)  {
+    @Test
+    public void testReentrentLock(){
+        CompletableFuture.runAsync(()->{
+            lock.lock();
+            try {
+                System.out.println(Thread.currentThread().getName()+"@");
+                TimeUnit.SECONDS.sleep(2);
+                System.out.println(Thread.currentThread().getName()+"@");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        });
 
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        CompletableFuture.runAsync(()->{
+            lock.lock();
+            try {
+                System.out.println(Thread.currentThread().getName()+"#");
+                System.out.println(Thread.currentThread().getName()+"#");
+            }  finally {
+                lock.unlock();
+            }
+        });
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args)  {
 
 
 

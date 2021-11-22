@@ -5,13 +5,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 20210810
  * 原子类
+ * 20210810
  * 第四部分
  */
 public class Atomic {
     /**
-     * 源自类
+     * 原子类
      * AtomicLong
      * 使用cas操作修改数据，当修改失败会不断尝试修改，直到修改成功为止。效率高于重量级锁
      * LongAdder

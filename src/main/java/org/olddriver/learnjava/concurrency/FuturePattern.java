@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * 20200907
  * future模式
+ * 20200907
  * 第二部分
  */
 public class FuturePattern {
@@ -52,9 +52,115 @@ public class FuturePattern {
      *                                      参数BiConsumer中accept方法的两个参数，一个为前一阶段结果，一个为前一阶段异常
      */
 
-
     @Test
     public void test(){
+        CompletableFuture.supplyAsync(()->{
+            return 1/0;
+        }).exceptionally((e)->{
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        });
+
+
+        CompletableFuture.runAsync(()->{
+            System.out.println("run");
+        }).runAfterEither(CompletableFuture.runAsync(()->{
+            System.out.println("AfterEither");
+        }),()->{
+            System.out.println("runAfterEither");
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "accept";
+        }).acceptEither(CompletableFuture.supplyAsync(()->{
+            return "Either";
+        }),(str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "apply";
+        }).applyToEither(CompletableFuture.supplyAsync(()->{
+            return "ToEither";
+        }),(str)->{
+            return str.toUpperCase();
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.runAsync(()->{
+            System.out.println("runAsync");
+        }).thenRun(()->{
+            System.out.println("thenRun");
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "thenAccept";
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "thenApply";
+        }).thenApply((str)->{
+            return str.toLowerCase();
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            System.out.println("run");
+            return "run";
+        }).runAfterBoth(CompletableFuture.supplyAsync(()->{
+            System.out.println("AfterBoth");
+            return "AfterBoth";
+        }),()->{
+            System.out.println("runAfterBoth");
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "then";
+        }).thenAcceptBoth(CompletableFuture.supplyAsync(()->{
+            return "AcceptBoth";
+        }),(left,right)->{
+            System.out.println(left.concat(right));
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "then";
+        }).thenCombine(CompletableFuture.supplyAsync(()->{
+            return "combine";
+        }),(left,right)->{
+            return left.concat(right);
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            return "thenCompose";
+        }).thenCompose((str)->{
+            return CompletableFuture.supplyAsync(()->{
+               return str.toUpperCase();
+            });
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+
+        CompletableFuture.runAsync(()->{
+            System.out.println(Thread.currentThread().getName()+"@@"+Thread.currentThread().getState()+"@@"+Thread.currentThread().isDaemon());
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            System.out.println(Thread.currentThread().getName()+"@@"+Thread.currentThread().getState()+"@@"+Thread.currentThread().isDaemon());
+            return "supplyAsync";
+        }).thenAccept((str)->{
+            System.out.println(str);
+        });
+    }
+
+
+    @Test
+    public void testWhenComplete(){
         CompletableFuture.supplyAsync(()->{
             if(true){
                 throw new RuntimeException("qq");

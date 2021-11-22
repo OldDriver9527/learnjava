@@ -49,14 +49,7 @@ public class ThreadTask {
 
         FutureTask<String> task = new FutureTask<>(callable);
 
-        CompletableFuture.runAsync(task);
-
-        try {
-            System.out.println(task.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        Thread thread = new Thread(task);
+        thread.start();
     }
 }
