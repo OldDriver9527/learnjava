@@ -78,7 +78,7 @@ public class Query {
      *         }
      *     }
      * }
-     * terms    多词项查询，将多个搜索内容作为词项进行查询。规则与term一致
+     * terms    多词项查询，将多个搜索内容均作为词项进行查询。规则与term一致
      * {
      *     "query":{
      *         "terms":{
@@ -87,7 +87,8 @@ public class Query {
      *     }
      * }
      *
-     * match phrase  短语匹配，将查询内容作为短语并非词项进行全文检索
+     * match phrase  短语匹配，对查询内容进行分词。
+     *               文本中词项顺序需与搜索内容中的词项顺序一致
      * {
      *     "query":{
      *         "match_phrase":{
@@ -137,5 +138,71 @@ public class Query {
      * filter缓存？？？
      * filter执行一定次数后会进行缓存，缓存为一个数组，记录词项在文档中是否存在
      * filter一般在query之前执行，过滤部分数据，提高query速度
+     *
+     * 前缀搜索
+     * 按指定前缀匹配词项，性能较差，不建议使用
+     * 不计算相关度评分
+     * {
+     *     "query":{
+     *         "prefix":{
+     *             "fieldname":{
+     *                 "value":""
+     *             }
+     *         }
+     *     }
+     * }
+     * 可在配置mapping时，为字段指定index_prefixes参数，为字段前缀创建倒排索引
+     * 加快前缀搜索速度
+     *
+     * 通配符搜索
+     * 性能差，不建议使用
+     * {
+     *     "query":{
+     *         "wildcard":{
+     *             "fieldname":{
+     *                 "value":""
+     *             }
+     *         }
+     *     }
+     * }
+     *
+     * 正则查询
+     * 性能差，不建议使用
+     * {
+     *     "query":{
+     *         "regexp":{
+     *             "fieldname":{
+     *                 "value":"",
+     *                 "flags":""
+     *             }
+     *         }
+     *     }
+     * }
+     * flags--
+     *
+     * 模糊查询
+     * 容错，性能差，不建议使用
+     * {
+     *     "query":{
+     *         "fuzzy":{
+     *             "fieldname":{
+     *                 "value":"",
+     *                 "fuzziness":""
+     *             }
+     *         }
+     *     }
+     * }
+     * fuzziness--容错距离
+     *
+     * match phrase prefix
+     * {
+     *     "query":{
+     *         "match_phrase_prefix":{
+     *             "fielaname":{
+     *                 "value":""
+     *             }
+     *         }
+     *     }
+     * }
      */
 }
