@@ -1,4 +1,4 @@
-package org.olddriver.learnes;
+package org.olddriver.learnelkb.es;
 
 /**
  * 批量操作

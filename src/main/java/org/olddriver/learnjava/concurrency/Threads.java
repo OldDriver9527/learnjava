@@ -83,9 +83,10 @@ public class Threads {
      *
      * 中断线程
      * interrupt    为指定线程设置中断状态，并不会使线程立刻停止
-     * isInterrupted    判断指定线程是否处于中断状态，不清除线程中断状态
-     * interrupted  判断当前线程是否处于中断状态，会清除线程中断状态
-     * 处于WAITING，TIMED_WAITING状态的线程，被中断时会抛出InterruptedException，并清除中断状态
+     * isInterrupted    判断指定线程是否处于中断状态，不清除线程中断状态；在线程运行状态下判断是否中断
+     * interrupted  判断当前线程是否处于中断状态，会清除线程中断状态；在线程运行状态下判断是否中断
+     * 处于WAITING，TIMED_WAITING状态的线程，被中断时会抛出InterruptedException，并清除中断状态，InterruptedException用于指明线程恢复的原因
+     * 处于RUNNBALE，BLOCKED状态的线程，被中断时仍会继续运行
      * 通过中断可以取消线程任务
      */
 
@@ -114,14 +115,15 @@ public class Threads {
     }
 
 
-    @Test
-    public void testReentrantLock(){
+    //@Test
+    public static void main(String[] args){
         Threads t = new Threads();
         Runnable runnable = t::reentrantLock;
 
         Thread thread1 = new Thread(runnable,"thread-1");
         Thread thread2 = new Thread(runnable,"thread-2");
-
+        thread1.setDaemon(false);
+        thread2.setDaemon(false);
         thread1.start();
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -135,17 +137,25 @@ public class Threads {
             e.printStackTrace();
         }
 
-        System.out.println("["+thread1.getName()+"]-["+thread1.getState()+"]");
+        Thread thread3 = new Thread(()->{
+            System.out.println("["+thread2.getName()+"]-["+thread2.getState()+"]");
+        });
+        thread3.setDaemon(false);
+        thread3.start();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        thread2.interrupt();
         System.out.println("["+thread2.getName()+"]-["+thread2.getState()+"]");
-
     }
 
     private ReentrantLock lock = new ReentrantLock();
     @Test
     public void reentrantLock(){
-
-        lock.lock();
         try{
+            lock.lock();
             System.out.println("["+Thread.currentThread().getName()+"]-[get reentrantlock]");
             try {
                 TimeUnit.SECONDS.sleep(10);

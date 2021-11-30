@@ -1,25 +1,30 @@
-package org.olddriver.learndatastructure;
+package org.olddriver.learnjava.collections;
 
 import java.util.Random;
 
 /**
  * 顺序表
+ *
+ * 顺序表相关操作
+ * 创建
+ * 销毁
+ * 清空   表长归0
  */
-public class SquenceList<T> {
+public class SequenceList<T> {
 
-    private final int defaultCapacity = 100;
+    private final int DEFAULT_CAPACITY = 100;
     private int capacity;
     private Object[] squenceList;
     private int length;
 
-    public SquenceList() {
+    public SequenceList() {
         super();
-        squenceList = new Object[defaultCapacity];
+        squenceList = new Object[DEFAULT_CAPACITY];
         length = 0;
-        capacity = defaultCapacity;
+        capacity = DEFAULT_CAPACITY;
     }
 
-    public SquenceList(Integer capacity) {
+    public SequenceList(Integer capacity) {
         super();
         squenceList = new Object[capacity];
         length = 0;
@@ -100,7 +105,7 @@ public class SquenceList<T> {
     }
 
     public static void main(String[] args) {
-        SquenceList<String> sqList = new SquenceList<>();
+        SequenceList<String> sqList = new SequenceList<>();
         for (int i = 0; i < 5; i++) {
             Random random = new Random();
             sqList.insert(String.valueOf((char)(random.nextInt(10)+97)),0);

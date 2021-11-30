@@ -36,6 +36,8 @@ public class Generics<T> {
      *
      * 泛型擦除
      * 将泛型类，泛型接口，泛型方法中类型变量替换为第一边界，若未指定边界替换为Object
+     *
+     * 逆变协变
      */
 
     public static void main(String[] args) {

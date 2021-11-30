@@ -1,13 +1,14 @@
-package org.olddriver.learndatastructure;
+package org.olddriver.learnjava.collections;
 
 import java.util.LinkedList;
 
 /**
+ * 栈，队列
  * 20200924
- * part 3
+ * 第四部分
  */
 public class StackAndQueue {
-    /*
+    /**
      * 栈stack，队列queue
      * 栈和队列是特殊的线性表
      *
@@ -80,7 +81,7 @@ public class StackAndQueue {
      *
      * 顺序循环队实现
      * 使用数组存放元素，使用变量front存放队头元素下标，变量rear存放队尾元素后一个元素下标。
-     * 禁用数组中的一个存储单元区分队空队满情况
+     * 禁用数组中队头元素前的一个存储单元，区分队空队满情况
      * 当front等于rear，队空
      * (rear+1)%maxqsize=front，队满
      *

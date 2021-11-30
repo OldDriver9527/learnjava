@@ -1,11 +1,11 @@
-package org.olddriver.learndatastructure;
+package org.olddriver.learnjava.collections;
 
 /**
  * 带头结点，不循环，单链表
  */
 public class LinkList<T> {
 
-    class Node<T> {
+    private class Node<T> {
         private T data;
         private Node<T> next;
 

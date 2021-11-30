@@ -1,11 +1,12 @@
-package org.olddriver.learndatastructure;
+package org.olddriver.learnjava.collections;
 
 /**
+ * 串
  * 20201018
- * part 4
+ * 第五部分
  */
 public class Strings {
-    /*
+    /**
      * 串
      * 特殊线性表，由n个字符构成的有限序列。n表示串长度，n等于0时，串为空串，空串用。
      * 子串

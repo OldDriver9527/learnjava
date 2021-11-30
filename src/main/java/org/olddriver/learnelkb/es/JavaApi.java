@@ -1,4 +1,4 @@
-package org.olddriver.learnes;
+package org.olddriver.learnelkb.es;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.delete.DeleteResponse;

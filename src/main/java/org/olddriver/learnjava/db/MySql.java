@@ -160,7 +160,7 @@ public class MySql {
      * 在事务中创建保存点，可以回滚到指定保存点。保存点之前操作保留
      * savepoint name   创建保存点
      * rollback to name 回滚到保存点，回滚至保存点事务不会结束，需手动提交
-     * 事务特性acid
+     * 事务特性acid atomicity consistency isolation durability
      * 原子性  事务中操作要么全发生，要么全失败
      * 一致性(正确性) 事务执行前后，数据均正确
      * 隔离性  多用户并发操作数据库，在事务隔离级别设置得当前提下，并发事务互不干扰

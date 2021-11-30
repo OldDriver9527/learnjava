@@ -327,7 +327,7 @@ public class JavaSyntax {
      * 二维数组 new 成员类型[第一维数组长度][];
      * 数组对象中的元素存在默认初始化值
      * iiii.数组Class对象
-     * 每个数组对象都对应一个Class对象，元素类型相同的数组共享同一个Class对象
+     * 每个数组对象都对应一个Class对象，数组类型相同，共享同一个Class对象
      * iiiii.数组操作
      * 数组工具类Arrays中提供操作数组的方法
      * toString	获取数组的字符串表现形式

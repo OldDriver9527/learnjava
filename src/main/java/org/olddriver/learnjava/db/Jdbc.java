@@ -12,9 +12,13 @@ public class Jdbc {
             // broken Java implementations
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            DriverManager.getConnection("");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=Hongkong","root","123456");
+
+            System.out.println(connection);
         } catch (Exception ex) {
             // handle the error
+
+            ex.printStackTrace();
         }
     }
 
