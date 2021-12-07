@@ -1,4 +1,4 @@
-package org.olddriver.mq.activesq;
+package org.olddriver.mq.activemq;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.Before;
@@ -59,6 +59,7 @@ public class ActiveMq {
      * 使用关系型数据库存储未处理消息，效率低，服务重启未处理消息不丢失
      * iii.内存存储
      * 未处理消息存储在内存中，不稳定
+     * iiii.JDBC Message store with ActiveMQ Journal
      *
      * activemq.xml中配置jdbc消息持久化策略
      * i.配置jdbc数据源
@@ -111,6 +112,24 @@ public class ActiveMq {
      * 分组消费
      * 对消息分组，不同消费者消费不同组的消息
      * 创建消费者时通过指定分组条件确定分组
+     * 不生效时使用setxxProperty方式
+     *
+     * 消息发送方式(同步，异步)
+     * 同步发送是指生产者发送消息后，会在收到broker肯定确认之后才发下一个消息
+     * 异步发送是指生产者发出消息后，不等接broker响应，接着发送下个消息，性能较高
+     * DeliveryMode采用持久化时，开启事务采用异步发送，关闭事务采用同步发送
+     * DeliveryMode采用非持久化时，采用异步发送
+     *
+     * 窗口尺寸？？
+     * 定时发送
+     * 在配置文件中配置broker支持调度，schedulerSupport=true
+     * 为消息设置发送时间
+     *
+     * 整合springboot
+     * MessageListenerContainer？？
+     * @JmsListener 修饰监听方法，当方法有返回值，会将返回值再次发送到队列中
+     * 可通过@SendTo注解指定目的地
+     *
      */
 
     private Connection connection = null;
@@ -257,7 +276,7 @@ public class ActiveMq {
                 TextMessage textMessage = session.createTextMessage("hello activemq");
                 producer.send(textMessage);
             }
-            session.commit();
+            //session.commit();
         } catch (JMSException e) {
             e.printStackTrace();
             try {

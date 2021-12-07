@@ -3,6 +3,7 @@ package org.olddriver.learnjava.collections;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ import java.util.stream.Stream;
 /**
  * 聚合操作
  * 20200823
- * 第八部分
+ * 第九部分
  */
 public class AggregateOperations {
     /**
@@ -49,13 +50,13 @@ public class AggregateOperations {
 
     @Test
     public void test() {
-        String[] arr = {"1", "2", "3"};
+        int[] arr = {1, 2, 3};
 
-        Optional<String> max = Stream.of(arr).max((x, y) -> {
-            return x.compareTo(y);
+        Arrays.stream(arr).filter((ele)->{
+            return Integer.compare(ele,2) > 0 ? true : false ;
+        }).forEach((ele)->{
+            System.out.println(ele);
         });
-
-        System.out.println(max.get());
 
     }
 

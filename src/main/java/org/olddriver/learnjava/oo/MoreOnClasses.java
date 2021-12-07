@@ -37,7 +37,9 @@ public class MoreOnClasses {
      *
      * Object类中方法
      * equals	判断当前对象与参数对象是否相同，Object类中eqauls方法使用==运算符进行判断；
-     * 子类可重写Object类中方法，自定义相等条件，但必须同时重写hashCode方法，确保对象相等时，散列值也相等
+     *          子类可重写Object类中方法，自定义相等条件，但必须同时重写hashCode方法，确保对象相等时，散列值也相等
+     *          Object类中equals方法使用==运算符比较
+     *          不同类型对象判断相等时，应转为相同类型之后再判断，否则判断结果可能有误
      * hashCode	返回对象散列值，Object类中hashCode方法返回对象内存地址的十六进制表现形式
      *
      * 可变参数

@@ -9,43 +9,59 @@ import java.util.concurrent.*;
 /**
  * 集合
  * 20200822
- * 第七部分
+ * 第八部分
  */
 public class Container {
     /**
      * 集合
      * 用于存储对象引用(容器只能存储引用数据类型)的数据结构
+     *
+     * 集合层次结构
      * 集合分为两大分支，
-     * 一个分支继承Collection，引用指向实际对象；
+     * 一个分支继承Collection，存储对象引用；
      * Collection接口重要子接口包括List，Set，Queue。
      * List集合中元素有序，允许重复元素
      * Set集合中不允许重复元素，SortedSet为Set子接口，会对集合中元素排序
      * Queue集合通常从一端添加元素，另一端移除元素。
      * Deque是Queue子接口，为双端队列，可从两端添加元素，两端移除元素
      * BlockingQueue是Queue子接口，阻塞队列，线程安全
-     * 另一个分支继承Map，引用指向Entry对象，Entry对象中包含key value引用，分别指向键值对对象
+     * 另一个分支继承Map，存储Entry，Entry中包含key value映射关系。Entry可以是链表中的结点也可以是红黑树中的结点
      * Map中key不允许重复，SortedMap为Map子接口，会对键值对按key进行排序
      *
      * List实现
      * List接口存在两个重要实现，ArrayList和LinkedList
-     * ArrayList    使用顺序表实现，随机访问元素的速度高，但添加移除元素的速度低
-     * LinkedList   使用链表实现，随机访问元素的速度低，但添加移除元素的速度高
+     * ArrayList    对顺序表的实现，使用数组存储元素，用变量记录表长
+     *              jdk1.7 ArrayList默认数组容量是10，也可指定初始容量。扩容时默认扩容1.5倍，当1.5倍容量仍比元素个数小，扩容成元素个数长度。扩容后将原表中数据移动到新表中
+     *              jdk1.8 ArrayList默认数组容量是0，延迟申请内存空间
+     *              首次添加元素扩容，若通过无参构造器创建，容量最少扩容到10
+     *              若通过指定容量的构造器创建，尝试扩容1.5倍
+     *              Vector扩容时尝试扩容2倍
+     * LinkedList   对链表实现，随机访问元素的速度低，但添加移除元素的速度高
+     *              jdk1.8 中获取指定索引处元素，判断索引是否超过长度一半，未超过正向访问，超过反向访问
      * CopyOnWriteArrayList 线程安全的ArrayList，添加元素时会复制所有元素性能较差，适合读多写少的场景
      *
      * Set实现
      * Set接口存在三个重要实现，HashSet，TreeSet，LinkedHashSet
-     * HashSet  使用哈希表实现
-     * TreeSet  使用树实现
-     * LinkedHashSet    使用哈希表和树实现
+     * HashSet  使用HashMap实现
+     * TreeSet  使用TreeMap实现
+     * LinkedHashSet    使用LinkedHashMap实现
      * EnumSet  存储枚举的集合
      * CopyOnWriteArraySet  线程安全的set
      *
      * Map实现
      * Map接口存在三个重要实现，HashMap，TreeMap，LinkedHashMap
+     * HashMap  对哈希表的实现，采用链地址法解决冲突
+     *          哈希数组的元素类型为内部类Map.Entry，初始长度为16(1<<4)
+     *          哈希冲突时，
+     *          jdk7中会进一步判断链表结点中的key，key存在不新建结点，key不存在新建结点进行头插
+     *          jdk8中会进一步判断链表结点中的key，key存在不新建结点，key不存在新建结点进行尾插
+     *          当HashMap中元素个数大于阈值，进行扩容，以2倍扩容。扩容后将元素再次散列到新数组
+     *          jdk8中当HashMap中某个散列地址的链表长度超过8且散列数组长度大于树化最小长度进行树化
+     * TreeMap  对红黑树的实现
      * EnumMap  存储枚举的Map
      * WeakHashMap  Map中key为弱引用
      * IdentityHashMap  添加键值对时使用==判断key是否相同
-     * ConcurrentHashMap    线程安全Map
+     * ConcurrentHashMap    线程安全HashMap
      *
      * Queue实现
      * Queue接口重要实现，LinkedList，PriorityQueue
