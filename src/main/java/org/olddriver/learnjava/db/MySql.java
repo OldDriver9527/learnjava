@@ -63,12 +63,13 @@ public class MySql {
      * year 年份，范围是1901到2155
      *
      * 字符串类型
-     * char 固定长度字符串，字符个数是0到255(新版本)
-     * varchar  可变长度的字符串，字符个数是0到一定上限，上限受字符集影响
+     * char 固定长度字符串，字符个数是0到255(新版本)。当存储字符数小于指定长度，会用空格填充，默认检索时移除填充的空格
+     * varchar  可变长度的字符串，字符个数是0到一定上限，上限受字符集影响。会使用1到2字节存储内容长度
      * binary   固定长度二进制字节序列
      * varbinary    可变长度二进制字节序列
      * tinytext，text，mediumtext，longtext    存储字符文本字符串，存储字符上限逐渐增加
      * tinyblob，blob，mediumblob，longblob    存储字节序列，存储字节上限逐渐增减
+     * enum 以整数方式存储，更加节省空间
      *
      * sql书写规范
      * 关键字大写，其余标识符小写
@@ -172,7 +173,11 @@ public class MySql {
      * 视图满足一定条件时，通过视图可以增删改基础表中数据
      *
      * insert语句
-     * insert into table(column,column,column) values(value,value,value)
+     * insert [IGNORE] into table(column,column,column) values(value,value,value)[ON DUPLICATE KEY UPDATE]
+     * IGNORE选项--当主键或唯一索引重复，忽略插入
+     * ON DUPLICATE KEY UPDATE选项--当主键或唯一索引重复，执行update
+     * replace语句
+     * 类似于insert，主键或唯一索引存在覆盖旧值
      * update语句
      * 单表操作
      * update table set column=value,column=value where condition [order by] [limit]
@@ -246,8 +251,6 @@ public class MySql {
      * 表级别锁
      * 事务在获取共享锁前需先获取意向共享锁。事务在获取排他锁前需先获取意向排他锁
      * 意向锁只会阻塞全表请求
-     *
-     * 行级别锁实现
      * 记录锁
      * 锁定某个唯一索引字段的一个值(即锁定一行)
      * 间隙锁
@@ -266,103 +269,76 @@ public class MySql {
      * 对于当前读语句，优先设置临键锁，临键锁可以进一步退化成间隙锁，记录锁
      *
      * 死锁
-     * 并发事务相互请求锁定
+     * 两个事务互相申请对方持有的锁，导致均不能执行
      *
      * mysql编码规则
      * mysql中utf8编码规则最多使用三字节表示一个字符，生僻字符可能无法表示。
      * utf8mb4编码规则最多使用四个字节表示一个字符，能表示的字符多于utf8
      *
      * 约束
-     * 用于限制表中列值，分为非空约束，唯一约束，主键约束，外键约束，检查约束
-     * 非空约束 列值不能为null
-     * 唯一约束 列值不能重复
-     * 主键约束 非空约束+唯一约束
+     * 用于限制表中字段值，分为非空约束，唯一约束，主键约束，外键约束，检查约束
+     * 非空约束 字段值不能为null
      * 外键约束
+     * 唯一约束 字段值不能重复，mysql唯一约束通过唯一索引实现
+     * 主键约束 非空约束+唯一约束
      * 检查约束 自定义列值限制
      *
-     * 存储引擎
-     * mysql与磁盘交互的组件，负责数据存储和提取。使用不同存储引擎，数据存取和索引技术都不相同
-     * innodb存储引擎主键索引默认采用聚簇索引，主键索引中存储数据，非主键索引中存储主键，要查询两次b+树获取数据(回表)
-     * myisam存储引擎主键索引默认采用非聚簇索引
-     * 存储引擎包括缓冲池、redo log缓冲池以及额外的内存池
+     * innodb存储结构
+     * .ibd文件为表空间文件，默认每个表一个表空间文件
+     * 表空间文件中分为若干段，如数据段，索引段
+     * 段中包含若干区
+     * 一个区中包含若干页，页默认大小16KB。
      *
      * 索引
-     * 一种数据结构，用于加快查询速度。索引中可能存储数据，也可能存储数据地址，根据索引类型决定
-     * 聚簇索引中包含行数据，非聚簇索引中不包含行数据。mysql中索引使用b+树结构
+     * 一种用于加快检索的特殊数据结构。innodb索引使用b+树结构，结点是页
+     * innodb表是聚簇索引，b+树叶子页中存储行数据
+     * 聚簇索引以外的索引称为二级索引，二级索引叶子页中包含索引值及主键值
+     * 通过二级索引检索数据需经过回表过程
+     *
      * 索引分类
-     * 主键索引 默认创建，非自增主键在存储时会进行排序，效率低。
+     * b+树索引
+     * hash索引   只适合进行 = ！= in not in 运算
+     * 全文索引
+     * r树索引     空间树索引，处理地理坐标，mysql不支持
+     * 主键索引
+     * 非空索引
      * 唯一索引
      * 普通索引
-     * 文本索引 适用于varchar，char，text类型
-     * 组合索引 多列组成一个索引，相当于创建多个索引，从左向右一次组合。最左匹配
+     * 组合索引     多个字段组成，查询时要满足最左匹配原则，比较占用空间
+     * 全文索引
      *
-     * 索引下推
+     * 覆盖索引(索引覆盖)
+     * 使用索引数据作为检索数据，不需读取行数据
+     * 执行计划中extra字段为using index表示索引覆盖
      *
-     * 数据库设计原则
-     * i.列不可分
-     * ii.表中最好仅包含描述一个事物的字段，无关字段拆分到其他表中
-     * iii.表中不应包含其他表中非主键
+     * 组合索引的失效(最左匹配原则 or原则)
+     * 使用组合索引时，字段书写顺序要与组合索引声明顺序一致。
+     * 多个字段用or连接可能导致索引失效，除非or两侧字段均添加索引
      *
-     * jdbc
-     * java程序集成数据库规范，由数据库厂商实现
-     *
-     * mysql架构
-     * mysql由连接器，分析器，优化器，执行器，存储引擎，客户端组成
-     * 连接器与客户端连接
-     * 分析器对sql进行词法分析，语法分析，生成语法树
-     * 优化器决定sql最优执行路径，形成执行计划
-     *
-     * 数据页
-     * mysql读写数据的基本单位
-     *
-     * 日志
-     * mysql包含bin log，redo log，undo log
-     * redo log
-     * innodb存储引擎生成，用于持久化事务，防止已提交的事务丢失。记录对数据页的修改内容
-     * 数据库非正常停止，再次重启后会使用到redo log
-     * 对数据页执行修改之前，生成redo log加入log buffer。默认在事务提交时，将buffer中日志写入磁盘log file中
-     * redo log存在3种刷新策略，对应innodb_flush_log_at_trx_commit变量值
-     * 0    事务提交将redo log保留在log buffer。延迟写
-     * 1    事务提交将redo log写入磁盘log file。实时写，实时刷
-     * 2    事务提交将redo log写入操作系统缓冲。实时写，延时刷
-     * undo log
-     * innodb存储引擎生成，用于事务回滚
-     * 在修改数据页之前，生成undo log加入log buffer
-     * bin log
-     * 数据库服务层生成，记录所有对数据进行更改的操作。用于数据恢复和备份
+     * 索引失效
+     * 模型数空运最快
+     * 模--模糊查询时以%开头
+     * 型--如varchar不添加单引号导致类型转换
+     * 数--函数运算
+     * 运--进行四则运算
+     * 快--全表扫描快于索引
      *
      * 执行计划
      * SELECT语句中每个表对应执行计划中一行信息
      * id   select语句标识符，表明select语句执行顺序
      *      id越大优先级越高，id相同从上到下执行
      * select_type  查询类型
-     * SIMPLE   简单查询，不使用子查询和union
-     * PRIMARY  嵌套查询中外层查询
-     * UNION    使用并集时，第二个或以后select语句
-     * DEPENDENT UNION  ？？？
-     * UNION RESULT 并集结果集合
-     * SUBQUERY 子查询
-     * DEPENDENT SUBQUERY   ？？？
-     * DERIVED  临时表，from子句中子查询
-     * MATERIALIZED
-     * UNCACHEABLE SUBQUERY 子查询的结果不能被缓存
-     * UNCACHEABLE UNION
+     *      SIMPLE(简单查询，不使用子查询和union) PRIMARY(嵌套查询中外层查询)
+     *      UNION(使用并集时，第二个或以后select语句) DEPENDENT UNION  ？？？
+     *      UNION RESULT(并集结果集合) SUBQUERY(子查询)
+     *      DEPENDENT SUBQUERY DERIVED  临时表，from子句中子查询
+     *      MATERIALIZED UNCACHEABLE SUBQUERY 子查询的结果不能被缓存
+     *      UNCACHEABLE UNION
      * table    提取数据的表名
-     * 可以是表名或别名或<derivedN>(临时表名)或<subqueryN>(子查询名)或<unionM,N>(并集名)
+     *          可以是表名或别名或<derivedN>(临时表名)或<subqueryN>(子查询名)或<unionM,N>(并集名)
      * partitions   分区
      * type 访问类型，从system到all，效率依次降低
-     * system
-     * const
-     * eq_ref   使用唯一索引查找
-     * ref  使用非唯一索引查找
-     * fulltext
-     * ref_or_null
-     * index_merge
-     * unique_subquery
-     * index_subquery
-     * range    使用索引查找，并限制范围
-     * index    全索引扫描
-     * ALL  全表扫描
+     *      all表示全表扫描
      * possible_keys    可能使用的索引列
      * key  实际使用的索引列
      * key_len  使用到的索引列长度
@@ -370,12 +346,53 @@ public class MySql {
      * rows 估算需要读取的数据行数，越小越好
      * filtered 读取行数占全表数据百分比
      * Extra    额外信息
-     * Using filesort  无法使用索引排序，只能使用排序算法排序
-     * Using temporary  建立临时表保存中间结果，查询结束删除临时表
-     * Using index  使用覆盖索引
-     * Using where  使用过滤条件
-     * Using join buffer    使用连接缓存
-     * impossible where 过滤条件均为false
+     *          Using filesort  无法使用索引排序，只能使用排序算法排序
+     *          Using temporary  建立临时表保存中间结果，查询结束删除临时表
+     *          Using index  使用覆盖索引
+     *          Using where  使用过滤条件
+     *          Using join buffer    使用连接缓存
+     *          impossible where 过滤条件均为false
+     *
+     * 存储引擎
+     * mysql与磁盘交互的组件，负责数据存储和提取。使用不同存储引擎，数据存取和索引技术都不相同
+     * innodb存储引擎主键索引默认采用聚簇索引，主键索引中存储数据，非主键索引中存储主键，要查询两次b+树获取数据(回表)
+     * myisam存储引擎主键索引默认采用非聚簇索引
+     * 存储引擎包括缓冲池、redo log缓冲池以及额外的内存池
+     *
+     * 数据库设计原则
+     * i.列不可分
+     * ii.表中最好仅包含描述一个事物的字段，无关字段拆分到其他表中
+     * iii.表中不应包含其他表中非主键
+     *
+     * mysql架构
+     * mysql由连接器，分析器，优化器，执行器，存储引擎，客户端组成
+     * 连接器与客户端连接
+     * 分析器对sql进行词法分析，语法分析，生成语法树
+     * 优化器决定sql最优执行路径，形成执行计划
+     *
+     * 日志
+     * mysql包含bin log，redo log，undo log
+     *
+     * undo log 撤销日志
+     * innodb存储引擎生成，用于事务回滚，mvcc中版本链的生成
+     * 在事务开始执行前，undolog已经记录完毕，undolog中记录要修改数据的前一版本
+     * 事务提交后，不会立即清除undolog。undolog被后台线程purge清除
+     *
+     * redo log 重写日志
+     * mysql对数据的修改在内存中完成，即将数据从磁盘读取到内存(Buffer Pool)中，放入Buffer Pool的缓冲页，
+     * 然后对缓冲页中的数据进行修改，但不会立即写回磁盘。假如在数据未写入磁盘前发生故障，会出现已提交的事务丢失
+     * innodb存储引擎生成，用于持久化事务，防止已提交的事务丢失。数据库非正常停止，再次重启后会使用到redo log
+     * 随着事务执行生成redo log加入log buffer。默认在事务提交时，将log buffer中日志写入磁盘中
+     * 脏页写入磁盘，重做日志可以销毁
+     * redo log存在3种刷新策略，对应innodb_flush_log_at_trx_commit变量值
+     * 0    事务提交将重做日志保留在log buffer。延迟写
+     * 1    事务提交将重做日志写入磁盘。实时写，实时刷
+     * 2    事务提交将重做日志写入操作系统缓冲。实时写，延时刷
+     *
+     * bin log 二进制日志
+     * 数据库服务层生成，记录所有对数据进行更改的操作。
+     * 用于数据恢复(通过工具恢复数据)和主从复制(主库开启binlog，从库使用binlog复制数据)
+     * 随着事务执行生成bin log加入缓冲。事务提交时间缓冲中数据写入磁盘
      *
      * mysql锁
      * 多用户同时操作数据库，每个连接在mysql服务端产生一个线程，通过锁协调多个线程并发访问同一资源
@@ -390,12 +407,23 @@ public class MySql {
      * myisam中为语句隐式加锁，也可使用lock table，unlock tables显式获取锁，不建议
      * myisam存储引擎，线程获取某张表锁之后，不能操作其他表
      * myisam读写是串行执行，但一定条件下，可以读写并行。通过变量concurrent_insert控制，使用read local锁？？？？？
-
      *
      * 主从复制
-     * 采用异步方式将数据从mysql主节点复制到若干从节点。可以复制全部数据或指定数据
-     * 步骤
-     * i.主节点会将所有对数据更改的操作记录在bin log中
+     * 通过binlog将主节点数据同步至从结点
+     * i.修改主节点配置文件添加binlog配置，重启服务
+     * log-bin binlog文件名
+     * binlog-format binlog日志格式
+     * server-id 服务id
+     * binlog-do-db 同步数据库
+     * ii.为从节点授予权限
+     * grant replication slave on *.* to 'root'@'%'
+     * iii.修改从节点配置文件，重启服务
+     * log-bin binlog文件名
+     * binlog-format binlog日志格式
+     * server-id 服务id
+     * iiii.修改主节点相关信息
+     * change master to master_host='192.168.85.11',master_user='root',master_password='123456',master_port=3306,master_log_file='master-bin.000001',master_log_pos=154;
+     * start slave
      * 主从复制延迟问题 mts
      *
      * 读写分离
@@ -405,5 +433,17 @@ public class MySql {
      * amoeba依赖jdk
      * 安装amoeba后修改dbServers.xml，amoeba.xml
      * 使用mycat实现读写分离
+     *
+     * sql性能分析
+     * profiling功能
+     * 开启profiling功能后，通过show profile，show profiles语句查看sql耗时，资源占用
+     * 已过时
+     * performance schema功能
+     * 性能监控模块，performance_schema库中存储监控数据
+     * 库中数据不会持久化，服务停止后数据清空
+     *
+     * 查看数据库连接
+     * show processlist
+     *
      */
 }

@@ -50,14 +50,12 @@ public class AggregateOperations {
 
     @Test
     public void test() {
-        int[] arr = {1, 2, 3};
-
-        Arrays.stream(arr).filter((ele)->{
-            return Integer.compare(ele,2) > 0 ? true : false ;
-        }).forEach((ele)->{
+        int[] arr = {1,2,3,4};
+        Arrays.stream(arr).mapToObj((int ele)->{
+            return String.valueOf(ele);
+        }).forEach((String ele)->{
             System.out.println(ele);
         });
-
     }
 
 
