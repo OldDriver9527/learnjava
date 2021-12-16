@@ -19,14 +19,16 @@ public class Locks {
     /**
      * ReentrantLock
      * 可重入锁，也叫递归锁。可以被同一个线程多次获取
+     * 存在公平，非公平两种模式(公平策略按线程申请锁的顺序获取锁，非公平策略线程间相互竞争；默认采用非公平策略)
+     * 通过队列同步器(AbstractQueuedSynchronizer)实现获取锁，释放锁
+     * 队列同步器中存在锁状态字段，锁状态为0表示锁未被获取。获取锁将锁状态加1，释放锁将锁状态减1
      * 与synchronized相比，ReentrantLock获取锁失败可以立即返回
      * lock()   获取锁，阻塞式。获取锁失败后线程阻塞
      * lockInterruptibly()  获取锁，阻塞式。获取锁失败线程进入等待状态，可以被其他线程中断
      * tryLock()    尝试获取锁，非阻塞式。获取锁失败会立即返回
      * tryLock(timeout) 指定等待时间，在等待时间内尝试获取锁。若超过等待时间立即返回
      * 获取锁的策略
-     * 公平策略按线程申请锁的顺序获取锁；非公平策略线程间相互竞争
-     * ReentrantLock默认采用非公平策略
+
      *
      * ReentrantReadWriteLock
      * 可重入读写锁

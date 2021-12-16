@@ -1,5 +1,7 @@
 package org.olddriver.learnjava.concurrency;
 
+import org.openjdk.jol.info.ClassLayout;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -38,6 +40,12 @@ public class Synchronized {
      * 竞争线程开始申请自旋锁。自旋锁申请失败线程不会阻塞，会进行循环，再次申请自旋锁
      * 当自旋锁申请10次后，自旋锁升级为重量级锁。竞争线程阻塞
      *
+     * 偏向锁失效
+     * identity hash code 与偏向锁的线程id都要存储在对象头中
+     * 在无锁状态下计算identity hash code后，会将identity hash code记录在对象头中，
+     * 此后不能使用线程id覆盖，获取锁时会跳过偏向锁的阶段
+     * 在偏向锁状态下计算identity hash code，会将偏向锁撤销，变为轻量级锁或重量级锁
+     *
      * volatile
      * volatile关键字可解决可见性问题，有序性问题，无法解决原子性问题
      *
@@ -50,24 +58,26 @@ public class Synchronized {
      */
 
     public static void main(String[] args) {
+        Object o = new Object();
+        System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        o.hashCode();
+        Thread t1 = new Thread(()->{
+            synchronized (o){
 
-        Runnable r = Synchronized::test;
+                System.out.println(ClassLayout.parseInstance(o).toPrintable());
 
-        Thread t1 = new Thread(r,"t1");
-        Thread t2 = new Thread(r,"t2");
-
+            }
+        });
+//        Thread t2 = new Thread(()->{
+//            synchronized (o){
+//                System.out.println("222");
+//                System.out.println(ClassLayout.parseInstance(o).toPrintable());
+//            }
+//        });
         t1.start();
-        t2.start();
-
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        //t2.start();
 
 
-        t2.interrupt();
-        System.out.println(t2.getState());
     }
 
 

@@ -3,7 +3,7 @@ package org.olddriver.learnelkb.es;
 /**
  * Elasticsearch查询
  * 20211117
- * 第三部分
+ * 第二部分
  */
 public class Query {
     /**

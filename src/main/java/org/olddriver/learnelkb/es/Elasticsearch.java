@@ -3,26 +3,18 @@ package org.olddriver.learnelkb.es;
 /**
  * Elasticsearch
  * 20211114
- * 第二部分
+ * 第一部分
  */
 public class Elasticsearch {
     /**
      * Elasticsearch
-     * 基于lucene开发的搜索引擎类数据库
-     *
-     * 倒排索引？？？
-     * es中核心概念，通过倒排索引可减少查找次数实现高速检索
-     * 倒排索引预先对字段中的内容进行拆分，拆分为词项(Term)。对词项建立索引，通过词项定位文档id最终定位到完整数据
-     * 倒排索引由词项字典(Term Dictionary)，倒排文件，词项索引(Term Index)组成
-     * 词项字典中维护词项和对应倒排列表(Posting List)的地址
-     * 倒排列表存储在倒排文件中，由倒排项组成的列表。
-     * 倒排项中可以包含词项所在文档id及词项在文档中出现的频率及词项在文档中出现的若干个具体位置
+     * 分布式搜索引擎类数据库，基于lucene开发
      *
      * 基本概念
      * 集群   cluster
      * 节点   node
-     * 字段   field
-     * 文档   document    es中的最小数据单元，包含多个字段。
+     * 字段   field   数据片段
+     * 文档   document    一个完整的数据单元，包含多个字段。
      * 类型   type    逻辑上的数据分类。type相同的document具有相同字段
      *                7.0版本每个索引只有一种类型，可以省略。8.0版本中将移除
      * 索引   index   相同或相似的文档集合
@@ -42,14 +34,22 @@ public class Elasticsearch {
      * green    集群健康，表示所有primary shard，replica shard均可用
      * yellow   所有primary shard可用，至少一个replica shard不可用
      * red      至少一个primary shard不可用
+     *
      * 集群健康信息
      * relocating_shards    迁移中分片数
      * initializing_shards  初始化分片数
      * unassigned_shards    未分配分片数
      *
-     * 基本操作
-     * 创建索引     index_name?param
-     * 删除索引     index_name?param
+     * 创建索引 put /index
+     * 创建索引的请求体可以包含aliases，settings，mappings，分别定义别名，设置，映射
+     * 删除索引 delete /index
+     * 查看索引 get /index
+     * 判断索引是否存在 head /index
+     * 关闭索引 post /index/_close  索引关闭不能进行读写操作
+     * 开启索引 post /index/_open
+     * 冻结索引 post /index/_freeze ？？？
+     * 解结索引 post /index/_unfreeze ？？？
+     *
      * 查询索引     _cat/indices
      * 插入文档     index_name/_doc/id {}
      * 添加数据，自动生成id  index_name/_doc {}
@@ -121,6 +121,14 @@ public class Elasticsearch {
      * 搜索引擎
      * 全文搜索引擎
      * 垂直搜索引擎
+     *
+     * 倒排索引？？？
+     * es中核心概念，通过倒排索引可减少查找次数实现高速检索
+     * 倒排索引预先对字段中的内容进行拆分，拆分为词项(Term)。对词项建立索引，通过词项定位文档id最终定位到完整数据
+     * 倒排索引由词项字典(Term Dictionary)，倒排文件，词项索引(Term Index)组成
+     * 词项字典中维护词项和对应倒排列表(Posting List)的地址
+     * 倒排列表存储在倒排文件中，由倒排项组成的列表。
+     * 倒排项中可以包含词项所在文档id及词项在文档中出现的频率及词项在文档中出现的若干个具体位置
      *
      * 倒排列表的压缩算法
      * Frame Of Reference
