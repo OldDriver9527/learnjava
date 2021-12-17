@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * future模式
@@ -53,109 +54,49 @@ public class FuturePattern {
      */
 
     @Test
-    public void test(){
-        CompletableFuture.supplyAsync(()->{
-            return 1/0;
-        }).exceptionally((e)->{
+    public static void main(String[] args){
+
+        CompletableFuture<String> f1 = CompletableFuture.supplyAsync(() -> {
+
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("1");
+            return "1";
+        });
+        CompletableFuture<String> f2 = CompletableFuture.supplyAsync(() -> {
+
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("2");
+            return "2";
+        });
+        CompletableFuture<String> f3 = CompletableFuture.supplyAsync(() -> {
+
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("3");
+            return "3";
+        });
+
+        CompletableFuture.allOf(f1, f2, f3).thenRun(()->{
+            System.out.println("4");
+        });
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
-        });
+        }
 
-
-        CompletableFuture.runAsync(()->{
-            System.out.println("run");
-        }).runAfterEither(CompletableFuture.runAsync(()->{
-            System.out.println("AfterEither");
-        }),()->{
-            System.out.println("runAfterEither");
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "accept";
-        }).acceptEither(CompletableFuture.supplyAsync(()->{
-            return "Either";
-        }),(str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "apply";
-        }).applyToEither(CompletableFuture.supplyAsync(()->{
-            return "ToEither";
-        }),(str)->{
-            return str.toUpperCase();
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.runAsync(()->{
-            System.out.println("runAsync");
-        }).thenRun(()->{
-            System.out.println("thenRun");
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "thenAccept";
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "thenApply";
-        }).thenApply((str)->{
-            return str.toLowerCase();
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            System.out.println("run");
-            return "run";
-        }).runAfterBoth(CompletableFuture.supplyAsync(()->{
-            System.out.println("AfterBoth");
-            return "AfterBoth";
-        }),()->{
-            System.out.println("runAfterBoth");
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "then";
-        }).thenAcceptBoth(CompletableFuture.supplyAsync(()->{
-            return "AcceptBoth";
-        }),(left,right)->{
-            System.out.println(left.concat(right));
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "then";
-        }).thenCombine(CompletableFuture.supplyAsync(()->{
-            return "combine";
-        }),(left,right)->{
-            return left.concat(right);
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            return "thenCompose";
-        }).thenCompose((str)->{
-            return CompletableFuture.supplyAsync(()->{
-               return str.toUpperCase();
-            });
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
-
-        CompletableFuture.runAsync(()->{
-            System.out.println(Thread.currentThread().getName()+"@@"+Thread.currentThread().getState()+"@@"+Thread.currentThread().isDaemon());
-        });
-
-        CompletableFuture.supplyAsync(()->{
-            System.out.println(Thread.currentThread().getName()+"@@"+Thread.currentThread().getState()+"@@"+Thread.currentThread().isDaemon());
-            return "supplyAsync";
-        }).thenAccept((str)->{
-            System.out.println(str);
-        });
     }
 
 

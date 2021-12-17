@@ -64,4 +64,14 @@ public class Dept {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "Dept{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", name='" + name + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
 }
